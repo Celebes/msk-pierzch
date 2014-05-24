@@ -17,18 +17,6 @@ public class Destination extends HaveNext {
 	
 	public Destination(IModelComponent next) {
 	}
-
-	@Override
-	public IModelComponent getNext() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public void setNext(IModelComponent next) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	@Override
 	public Vector validate() {

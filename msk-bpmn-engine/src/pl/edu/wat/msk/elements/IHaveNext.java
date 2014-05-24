@@ -1,5 +1,7 @@
 package pl.edu.wat.msk.elements;
 
+import java.util.ArrayList;
+
 /**
  * 
  * @since 24.05.2014, 19:50
@@ -8,8 +10,11 @@ package pl.edu.wat.msk.elements;
  */
 public interface IHaveNext {
 
-	public IModelComponent getNext();
+	public ArrayList<IModelComponent> getNext();
 	
-	public void setNext(IModelComponent next);
+	public void setNext(ArrayList<IModelComponent> next);
 
+	public void addNext(IModelComponent next);
+	
+	public void removeNext(IModelComponent next);
 }

@@ -13,30 +13,6 @@ import pl.edu.wat.msk.Notification;
 public class CompositeActivity extends HavePrevNext {
 
   public java.util.Vector modelComponents;
-
-	@Override
-	public IModelComponent getNext() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public void setNext(IModelComponent next) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public IModelComponent getPrev() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public void setPrev(IModelComponent prev) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	@Override
 	public Vector validate() {

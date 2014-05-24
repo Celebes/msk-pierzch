@@ -1,5 +1,7 @@
 package pl.edu.wat.msk.elements;
 
+import java.util.ArrayList;
+
 /**
  * 
  * @since 24.05.2014, 19:50
@@ -8,8 +10,11 @@ package pl.edu.wat.msk.elements;
  */
 public interface IHavePrev {
 
-	public IModelComponent getPrev();
+	public ArrayList<IModelComponent> getPrev();
 	
-	public void setPrev(IModelComponent prev);
+	public void setPrev(ArrayList<IModelComponent> prev);
 
+	public void addPrev(IModelComponent prev);
+	
+	public void removePrev(IModelComponent prev);
 }

@@ -1,5 +1,6 @@
 package pl.edu.wat.msk.elements;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 import dissimlab.monitors.MonitoredVar;
@@ -60,35 +61,11 @@ public class Queue extends HavePrevNext implements IHaveNext {
 	  public int getSize() {
 	  return 0;
 	  }
-
-	@Override
-	public IModelComponent getPrev() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public void setPrev(IModelComponent prev) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	@Override
 	public Vector validate() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-	
-	@Override
-	public IModelComponent getNext() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public void setNext(IModelComponent next) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	@Override
