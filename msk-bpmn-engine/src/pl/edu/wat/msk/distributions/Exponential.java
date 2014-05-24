@@ -8,6 +8,7 @@ package pl.edu.wat.msk.distributions;
  */
 public class Exponential extends AbstractDistribution implements IDistribution {
 
+	//próba commita
 	public double a;
 	
 	public Exponential(double a) {
