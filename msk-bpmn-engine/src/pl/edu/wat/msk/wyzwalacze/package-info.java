@@ -1,8 +1,8 @@
 /**
- * W pakiecie znajduj¹ siê klasy odpowiedzialne za wywo³ywanie metod dla generatora.
+ * W pakiecie znajdujÄ… siÄ™ klasy odpowiedzialne za wywoÅ‚ywanie metod dla generatora.
  */
 /**
- * @author £ukasz Kotowski
+ * @author Åukasz Kotowski
  *
  */
 package pl.edu.wat.msk.wyzwalacze;
