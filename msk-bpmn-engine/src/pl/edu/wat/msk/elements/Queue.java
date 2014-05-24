@@ -92,7 +92,7 @@ public class Queue extends HavePrevNext implements IHaveNext {
 	}
 	
 	@Override
-	public void processing() {
+	public void processing(Notification notification) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -2,6 +2,8 @@ package pl.edu.wat.msk.elements;
 
 import java.util.Vector;
 
+import pl.edu.wat.msk.Notification;
+
 /** 
  *  Aby uruchomi? z?o?on? aktywno?? konieczne jest przechowywanie przez niego komponentu ?r?d?a oraz celu.
  * @since 24.05.2014, 19:50
@@ -43,7 +45,7 @@ public class CompositeActivity extends HavePrevNext {
 	}
 	
 	@Override
-	public void processing() {
+	public void processing(Notification notification) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -2,6 +2,7 @@ package pl.edu.wat.msk.elements;
 
 import java.util.Vector;
 
+import pl.edu.wat.msk.Notification;
 import dissimlab.simcore.SimEventSemaphore;
 
 /**
@@ -49,7 +50,7 @@ public class Semaphore extends HavePrevNext implements IHaveNext {
 	}
 
 	@Override
-	public void processing() {
+	public void processing(Notification notification) {
 		// TODO Auto-generated method stub
 		
 	}

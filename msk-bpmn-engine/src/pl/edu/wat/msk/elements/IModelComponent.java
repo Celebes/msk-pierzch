@@ -2,6 +2,8 @@ package pl.edu.wat.msk.elements;
 
 import java.util.Vector;
 
+import pl.edu.wat.msk.Notification;
+
 /**
  * 
  * @since 24.05.2014, 19:50
@@ -13,7 +15,7 @@ public interface IModelComponent {
 	/** 
 	 *  Przetwarzanie
 	 */
-	public void processing();
+	public void processing(Notification notification);
 	
 	/** 
 	 *  Metoda walidacji komponentu.

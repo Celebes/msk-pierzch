@@ -2,6 +2,8 @@ package pl.edu.wat.msk.elements;
 
 import java.util.Vector;
 
+import pl.edu.wat.msk.Notification;
+
 /** 
  *  Je?li:
  *  AND - zg?oszenie przechodzi tylko gdy dojd? z innych wej?? (razem z nimi)
@@ -46,7 +48,7 @@ public class LogicGate extends HavePrevNext {
 	}
 
 	@Override
-	public void processing() {
+	public void processing(Notification notification) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -1,5 +1,4 @@
 package pl.edu.wat.msk.elements;
-
 import dissimlab.simcore.BasicSimObj;
 
 /**
@@ -13,10 +12,5 @@ public abstract class ModelComponent extends BasicSimObj implements IModelCompon
   public String name;
 
   public String description;
-
-  /** 
-   *  Metoda do zaimplementowania
-   */
-  public abstract void processing();
 
 }

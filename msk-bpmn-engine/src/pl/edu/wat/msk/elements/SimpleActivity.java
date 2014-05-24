@@ -3,6 +3,7 @@ package pl.edu.wat.msk.elements;
 import java.util.Vector;
 
 import dissimlab.monitors.MonitoredVar;
+import pl.edu.wat.msk.Notification;
 import pl.edu.wat.msk.distributions.IDistribution;
 
 /**
@@ -69,7 +70,7 @@ public class SimpleActivity extends HavePrevNext {
 	}
 	
 	@Override
-	public void processing() {
+	public void processing(Notification notification) {
 		// TODO Auto-generated method stub
 		
 	}

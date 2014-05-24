@@ -2,6 +2,8 @@ package pl.edu.wat.msk.elements;
 
 import java.util.Vector;
 
+import pl.edu.wat.msk.Notification;
+
 /**
  * 
  * @since 24.05.2014, 19:50
@@ -35,7 +37,7 @@ public class Destination extends HaveNext {
 	}
 	
 	@Override
-	public void processing() {
+	public void processing(Notification notification) {
 		// TODO Auto-generated method stub
 		
 	}
