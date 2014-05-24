@@ -1,3 +1,4 @@
+
 package pl.edu.wat.msk.distributions;
 
 /**
@@ -8,6 +9,7 @@ package pl.edu.wat.msk.distributions;
  */
 public class Exponential extends AbstractDistribution implements IDistribution {
 
+	//
 	public double a;
 	
 	public Exponential(double a) {
