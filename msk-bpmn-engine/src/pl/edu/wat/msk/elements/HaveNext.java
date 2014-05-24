@@ -1,5 +1,7 @@
 package pl.edu.wat.msk.elements;
 
+import java.util.ArrayList;
+
 /**
  * 
  * @since 24.05.2014, 19:50
@@ -8,6 +10,25 @@ package pl.edu.wat.msk.elements;
  */
 public abstract class HaveNext extends ModelComponent implements IHaveNext {
 
-	public IModelComponent next;
+	protected ArrayList<IModelComponent> nexts;
+	
+	public HaveNext() {
+		nexts = new ArrayList<>();
+	}
 
+	public ArrayList<IModelComponent> getNext() {
+		return nexts;
+	}
+	
+	public void setNext(ArrayList<IModelComponent> next) {
+		nexts = next;
+	}
+
+	public void addNext(IModelComponent next) {
+		nexts.add(next);
+	}
+	
+	public void removeNext(IModelComponent next) {
+		nexts.remove(next);
+	}
 }

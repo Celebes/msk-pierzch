@@ -1,5 +1,7 @@
 package pl.edu.wat.msk.elements;
 
+import java.util.ArrayList;
+
 /**
  * 
  * @since 24.05.2014, 19:50
@@ -8,6 +10,25 @@ package pl.edu.wat.msk.elements;
  */
 public abstract class HavePrev implements IHavePrev {
 
-	public IModelComponent prev;
+	protected ArrayList<IModelComponent> prev;
+	
+	public HavePrev() {
+		prev = new ArrayList<>();
+	}
 
+	public ArrayList<IModelComponent> getPrev() {
+		return prev;
+	}
+	
+	public void setPrev(ArrayList<IModelComponent> prev) {
+		this.prev = prev;
+	}
+
+	public void addPrev(IModelComponent prev) {
+		this.prev.add(prev);
+	}
+	
+	public void removePrev(IModelComponent prev) {
+		this.prev.remove(prev);
+	}
 }
