@@ -19,8 +19,8 @@ public interface IModelComponent {
 	
 	/** 
 	 *  Metoda walidacji komponentu.
-	 *  Zwraca kolekcj? ewentualnych problem?w spotykanych przy walidacji
+	 *  Zwraca kolekcję ewentualnych problemów spotykanych przy walidacji.
 	 */
-	public Vector validate();
+	public Vector<ValidationMessage> validate();
 
 }
