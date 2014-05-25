@@ -2,16 +2,16 @@
 <symulacja>
     <czynnosc>
    	 <otoczenie id="generator1" rozklad="" dlugoscGenerowania=""  maxIloscZgloszen="" >
-	<rozklad id="rozklad1" rodzaj="erlang" >
-<param nazwa="alfa" wartosc="4"/>
-<param nazwa="beta" wartosc="7"/>
-</rozklad>
+		<rozklad id="rozklad1" rodzaj="erlang" >
+			<param nazwa="alfa" wartosc="4"/>
+			<param nazwa="beta" wartosc="7"/>
+	</rozklad>
 	</otoczenie>
 
    	 <otoczenie id="generator2" rozklad="" dlugoscGenerowania=""  maxIloscZgloszen="" >
-	<rozklad id="rozklad2" rodzaj="jednostajny" >
-<param nazwa="a" wartosc="1"/>
-</rozklad>
+		<rozklad id="rozklad2" rodzaj="jednostajny" >
+			<param nazwa="a" wartosc="1"/>
+		</rozklad>
 	</otoczenie>
 
    	 <kolejka id="SMO1" nieskonczona="true">
