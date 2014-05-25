@@ -17,7 +17,7 @@ public class Queue extends HavePrevNext implements IHaveNext {
 
 	  private int size;
 	
-	  private java.util.Vector notifications;
+	  private java.util.Vector<Notification> notifications;
 	
 	  /** 
 	   *  Zminenna monitora czasu oczekiwania w kolejce
@@ -30,36 +30,47 @@ public class Queue extends HavePrevNext implements IHaveNext {
 	  public MonitoredVar queueLengthMV;
 	
 	  public Queue(int size) {
+		  this.size = size;
+		  notifications = new Vector<Notification>(size);
+		  waitTimeMV = new MonitoredVar();
+		  queueLengthMV = new MonitoredVar();
 	  }
 
 	  /** 
 	   *  Dodanie zg?oszenia do kolejki
 	   */
 	  public void add(Notification notification) {
+		  notifications.add(notification);
+		  queueLengthMV.setValue(notifications.size());
+		  
 	  }
 	
 	  /** 
 	   *  Usuni?cie zg?oszenia z kolejki
 	   */
 	  public Notification delete() {
-	  return null;
+		  Notification notification = notifications.remove(0);
+		  queueLengthMV.setValue(notifications.size());
+		  return notification;
 	  }
 	
 	  /** 
 	   *  Usuni?cie konkretnego zg?oszenia
 	   */
 	  public void delete(Notification notification) {
+		  notifications.remove(notification);
+		  queueLengthMV.setValue(notifications.size());
 	  }
 	
 	  /** 
 	   *  Liczba zg?osze? w kolejce
 	   */
 	  public int getCount() {
-	  return 0;
+		  return notifications.size();
 	  }
 	
 	  public int getSize() {
-	  return 0;
+		  return size;
 	  }
 	
 	@Override
