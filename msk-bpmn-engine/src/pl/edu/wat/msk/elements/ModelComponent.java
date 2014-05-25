@@ -1,9 +1,14 @@
 package pl.edu.wat.msk.elements;
+
+import pl.edu.wat.msk.Notification;
 import dissimlab.simcore.BasicSimObj;
 
 /**
+ * Komponent budowanego modelu.
+ * 
  * @author Mariusz Kielan
  * @since 24.05.2014, 19:50
+ * @version 0.0.1
  */
 public abstract class ModelComponent extends BasicSimObj implements IModelComponent {
 
@@ -31,5 +36,9 @@ public abstract class ModelComponent extends BasicSimObj implements IModelCompon
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	@Override
+	public void processing(Notification notification) {
 	}
 }
