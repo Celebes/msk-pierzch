@@ -24,7 +24,7 @@ public class OtoczenieGeneric
     
     public OtoczenieGeneric(String type, String a, String b, String c)
     {
-      this.convertDataForDistribution(type, a, b, c);
+      this.convertDataForDistribution(type, a, b);
     }
     
     
@@ -33,7 +33,7 @@ public class OtoczenieGeneric
     }
     
     
-    private void convertDataForDistribution(String type, String a, String b, String c){
+    private void convertDataForDistribution(String type, String a, String b){
     	  type = type.toUpperCase();
           try
           {
