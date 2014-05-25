@@ -4,8 +4,8 @@
 		<otoczenie id="generator1" dlugoscGenerowania=""
 			maxIloscZgloszen="">
 			<rozklad id="rozklad1" rodzaj="erlang">
-				<param nazwa="alfa" wartosc="4" />
-				<param nazwa="beta" wartosc="7" />
+				<param nazwa="a" wartosc="4" />
+				<param nazwa="b" wartosc="7" />
 			</rozklad>
 		</otoczenie>
 
@@ -13,6 +13,7 @@
 			maxIloscZgloszen="">
 			<rozklad id="rozklad2" rodzaj="jednostajny">
 				<param nazwa="a" wartosc="1" />
+				<param nazwa="b" wartosc="nil" />
 			</rozklad>
 		</otoczenie>
 
