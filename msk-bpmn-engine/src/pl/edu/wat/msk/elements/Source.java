@@ -3,27 +3,31 @@ package pl.edu.wat.msk.elements;
 import java.util.Vector;
 
 import dissimlab.monitors.MonitoredVar;
+import dissimlab.simcore.SimControlException;
+
 import pl.edu.wat.msk.Notification;
 import pl.edu.wat.msk.distributions.IDistribution;
+import pl.edu.wat.msk.events.ThrowNotificationEvent;
 
 /**
  * źródło generujące zgłoszenia dla systemu.
  * 
  * @author Mariusz Kielan
  * @since 24.05.2014, 19:50
- *
+ * @version 0.0.2
  */
 public class Source extends HavePrevNext {
-	
+	private ThrowNotificationEvent throwNotification;
+
 	/** 
 	 *  Rozkład przerw pomiedzy generowaniem zgłoszeń
 	 */
-	public IDistribution breaksDistribution;
+	private IDistribution breaksDistribution;
 	
 	/** 
 	 *  Rozkład liczby generowanych zgłoszeń jednocześnie
 	 */
-	public IDistribution generateDistribution;
+	private IDistribution generateDistribution;
 	
 	/** 
 	 *  Czas generowania zgłoszeń ( w sekundach ). 
@@ -36,14 +40,15 @@ public class Source extends HavePrevNext {
 	 */
 	public MonitoredVar durningNotificationTimeMV;
 	
-	public Source() {
+	public Source() throws SimControlException {
 		super();
 		durningNotificationTimeMV = new MonitoredVar();
+		throwNotification = new ThrowNotificationEvent(this);
 	}
 	
 	public Source(IModelComponent next, 
 			IDistribution breaksDistribution, 
-			IDistribution generateDistribution) {
+			IDistribution generateDistribution)  throws SimControlException {
 		
 		this();
 		nexts.add(next);
@@ -57,7 +62,7 @@ public class Source extends HavePrevNext {
 	 *  Wówczas obiekt nie generuje zgłoszeń, a staje się pośrednikiem prekazującym dalej 
 	 *  zgłoszenie, które do niego dotarło.
 	 */
-	public Source(IModelComponent next) {
+	public Source(IModelComponent next)  throws SimControlException {
 		this();
 		nexts.add(next);
 	}
@@ -85,16 +90,28 @@ public class Source extends HavePrevNext {
 		
 		return msgs;
 	}
-	
-	/**
-	 *  Generowanie zgłoszeń, wykorzystując zadane rozkłady.
-	 * 
-	 * @param notification - atrybut pomijalny.
-	 */
-	@Override
-	public void processing(Notification notification) {
-		// TODO Auto-generated method stub
-		
+
+	public IDistribution getBreaksDistribution() {
+		return breaksDistribution;
 	}
 
+	public IDistribution getGenerateDistribution() {
+		return generateDistribution;
+	}
+
+	public void setBreaksDistribution(IDistribution breaksDistribution) {
+		this.breaksDistribution = breaksDistribution;
+	}
+
+	public void setGenerateDistribution(IDistribution generateDistribution) {
+		this.generateDistribution = generateDistribution;
+	}
+
+	public ThrowNotificationEvent getThrowNotification() {
+		return throwNotification;
+	}
+
+	public void setThrowNotification(ThrowNotificationEvent throwNotification) {
+		this.throwNotification = throwNotification;
+	}
 }

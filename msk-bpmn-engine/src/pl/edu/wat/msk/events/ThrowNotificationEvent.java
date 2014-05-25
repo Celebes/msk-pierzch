@@ -3,6 +3,7 @@ package pl.edu.wat.msk.events;
 import dissimlab.random.SimGenerator;
 import dissimlab.simcore.BasicSimEvent;
 import dissimlab.simcore.SimControlException;
+import dissimlab.simcore.SimParameters.SimDateField;
 import pl.edu.wat.msk.Notification;
 import pl.edu.wat.msk.elements.Source;;
 
@@ -22,12 +23,16 @@ public class ThrowNotificationEvent
 	
 	public ThrowNotificationEvent(Source parent, double delay) throws SimControlException {
 		super(parent, delay);
+		
 		this.parent = parent;
+		this.generator = new SimGenerator();
 	}
 	
 	public ThrowNotificationEvent(Source parent) throws SimControlException {
 		super(parent);
+		
 		this.parent = parent;
+		this.generator = new SimGenerator();
 	}
 
 	@Override
@@ -35,8 +40,14 @@ public class ThrowNotificationEvent
 		parent = getSimObj();
 		
 		Notification n = new Notification(simTime());
+		parent.putToNexts(n);
 		
+		System.out.println(simDate(SimDateField.HOUR24)+" - "+simDate(SimDateField.MINUTE)+" - "+simDate(SimDateField.SECOND)+" - "+simDate(SimDateField.MILLISECOND)+": źródło: Dodano nowe zgl. nr: " + n.getId());
 		
+		//nowe zgłoszenie, po wygenerowanym opóźnieniu
+		double deley = parent.getGenerateDistribution().getNextDouble();
+		parent.durningNotificationTimeMV.setValue(deley);
+		parent.setThrowNotification(new ThrowNotificationEvent(parent, deley));
 	}
 
 	@Override
