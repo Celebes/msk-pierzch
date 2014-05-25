@@ -7,6 +7,8 @@ import pl.edu.wat.msk.Notification;
 import pl.edu.wat.msk.distributions.IDistribution;
 
 /**
+ * źródło generujące zgłoszenia dla systemu.
+ * 
  * @author Mariusz Kielan
  * @since 24.05.2014, 19:50
  *
