@@ -99,5 +99,9 @@ public class Queue extends HavePrevNext implements IHaveNext {
 		// TODO Auto-generated method stub
 
 	}
+	
+	
+	
+	
 
 }
