@@ -15,7 +15,7 @@
                           <xsd:element maxOccurs="unbounded" name="param">
                             <xsd:complexType>
                               <xsd:attribute name="nazwa" type="xsd:string" />
-                              <xsd:attribute name="wartosc" type="xsd:int" />
+                              <xsd:attribute name="wartosc" type="xsd:string" />
                             </xsd:complexType>
                           </xsd:element>
                         </xsd:sequence>
@@ -45,6 +45,7 @@
                   </xsd:sequence>
                   <xsd:attribute name="id" type="xsd:string" />
                   <xsd:attribute name="nieskonczona" type="xsd:boolean" />
+                  <xsd:attribute name="maxDlugoscKolejki" type="xsd:string" />
                 </xsd:complexType>
               </xsd:element>
               <xsd:element name="bramka">

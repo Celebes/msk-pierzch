@@ -4,19 +4,19 @@
 		<otoczenie id="generator1" dlugoscGenerowania=""
 			maxIloscZgloszen="">
 			<rozklad id="rozklad1" rodzaj="erlang">
-				<param nazwa="alfa" wartosc="4" />
-				<param nazwa="beta" wartosc="7" />
+				<param nazwa="alfa" wartosc="bbb" />
+				<param nazwa="beta" wartosc="ccc" />
 			</rozklad>
 		</otoczenie>
 
 		<otoczenie id="generator2" dlugoscGenerowania=""
 			maxIloscZgloszen="">
 			<rozklad id="rozklad2" rodzaj="jednostajny">
-				<param nazwa="a" wartosc="1" />
+				<param nazwa="a" wartosc="aaaa" />
 			</rozklad>
 		</otoczenie>
 
-		<kolejka id="SMO1" nieskonczona="true">
+		<kolejka id="SMO1" nieskonczona="true" maxDlugoscKolejki="niesk">
 			<gniazdo id="G1" />
 			<koniec id="niecierpliwosc1" />
 		</kolejka>
