@@ -15,4 +15,20 @@ public class NegativeBinomial extends AbstractDistribution {
 		return super.getSimGen().negativebinomial(p, n);
 	}
 
+	public double getP() {
+		return p;
+	}
+
+	public void setP(double p) {
+		this.p = p;
+	}
+
+	public int getN() {
+		return n;
+	}
+
+	public void setN(int n) {
+		this.n = n;
+	}
+
 }

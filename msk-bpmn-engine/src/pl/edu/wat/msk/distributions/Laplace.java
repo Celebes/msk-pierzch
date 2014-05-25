@@ -18,4 +18,12 @@ public class Laplace extends AbstractDistribution {
 		return super.getSimGen().laplace(a);
 	}
 
+	public double getA() {
+		return a;
+	}
+
+	public void setA(double a) {
+		this.a = a;
+	}
+
 }

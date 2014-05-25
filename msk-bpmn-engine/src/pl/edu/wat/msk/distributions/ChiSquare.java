@@ -13,4 +13,12 @@ public class ChiSquare extends AbstractDistribution {
 		return super.getSimGen().chisquare(n);
 	}
 
+	public int getN() {
+		return n;
+	}
+
+	public void setN(int n) {
+		this.n = n;
+	}
+
 }

@@ -12,4 +12,12 @@ public class Student extends AbstractDistribution {
 		return super.getSimGen().student(n);
 	}
 
+	public int getN() {
+		return n;
+	}
+
+	public void setN(int n) {
+		this.n = n;
+	}
+
 }

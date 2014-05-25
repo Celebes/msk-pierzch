@@ -18,4 +18,12 @@ public class Exponential extends AbstractDistribution implements IDistribution {
 		return super.getSimGen().exponential(a);
 	}
 
+	public double getA() {
+		return a;
+	}
+
+	public void setA(double a) {
+		this.a = a;
+	}
+
 }

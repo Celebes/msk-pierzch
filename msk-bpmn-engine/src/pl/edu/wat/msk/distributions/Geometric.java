@@ -13,4 +13,12 @@ public class Geometric extends AbstractDistribution {
 		return super.getSimGen().geometric(p);
 	}
 
+	public double getP() {
+		return p;
+	}
+
+	public void setP(double p) {
+		this.p = p;
+	}
+
 }

@@ -21,4 +21,20 @@ public class Erlang extends AbstractDistribution {
 		return super.getSimGen().erlang(n, a);
 	}
 
+	public Integer getN() {
+		return n;
+	}
+
+	public void setN(Integer n) {
+		this.n = n;
+	}
+
+	public double getA() {
+		return a;
+	}
+
+	public void setA(double a) {
+		this.a = a;
+	}
+
 }

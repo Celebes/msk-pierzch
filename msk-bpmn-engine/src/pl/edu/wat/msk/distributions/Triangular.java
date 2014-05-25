@@ -13,4 +13,12 @@ public class Triangular extends AbstractDistribution {
 		return super.getSimGen().triangular(a);
 	}
 
+	public double getA() {
+		return a;
+	}
+
+	public void setA(double a) {
+		this.a = a;
+	}
+
 }
