@@ -16,7 +16,7 @@ public class XmlParser {
 	public static void main(String[] args) {
 		try {
 
-			URI path = XmlParser.class.getClassLoader().getResource("./diagram.xml").toURI();
+			URI path = XmlParser.class.getClassLoader().getResource("./diagram_prosty.xml").toURI();
 			File file = new File(path);
 
 			JAXBContext jaxbContext = JAXBContext.newInstance(Symulacja.class);
