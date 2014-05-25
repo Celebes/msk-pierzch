@@ -1,7 +1,7 @@
 
 /**
  * Pakiet ze zdarzeniami symulacji
- * @author mariusz
- *
+ * @author Mariusz Kielan
+ * @since 25.05.2014
  */
 package pl.edu.wat.msk.events;
