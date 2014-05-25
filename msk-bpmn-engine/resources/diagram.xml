@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<symulacja>
+    <czynnosc>
+   	 <otoczenie id="generator1" rozklad="" dlugoscGenerowania=""
+   		 maxIloscZgloszen="" />
+   	 <otoczenie id="generator2" rozklad="" dlugoscGenerowania=""
+   		 maxIloscZgloszen="" />
+
+
+   	 <kolejka id="SMO1" nieskonczona="true">
+   		 <gniazdo id="G1" />
+   		 <koniec id="niecierpliwosc1" />
+   	 </kolejka>
+
+   	 <kolejka id="SMO2" nieskonczona="false" maxDlugoscKolejki="N">
+   		 <gniazdo id="G2" />
+   		 <koniec id="niecierpliwosc2" />
+   	 </kolejka>
+
+   	 <kolejka id="SMO3" nieskonczona="false" maxDlugoscKolejki="M">
+   		 <gniazdo id="G3" />
+   		 <koniec id="niecierpliwosc3" />
+   	 </kolejka>
+
+ 	<bramka id="bramka1" rodzaj="OR" />
+
+   	 <semafor id="SEM" />
+
+   	 <polaczenie id="linia1" od="generator1" do="SMO1" />
+   	 <polaczenie id="linia2" od="generator2" do="SMO2" />
+
+   	 <polaczenie id="linia3" od="SMO1" do="bramka1" />
+   	 <polaczenie id="linia4" od="SMO2" do="bramka1" />
+
+   	 <polaczenie id="linia5" od="bramka1" do="SEM">
+   		 <warunek id="warunek1" wyrazenie="TRUE" />
+   	 </polaczenie>
+
+   	 <polaczenie id="linia6" od="SEM" do="SMO3" />
+
+    </czynnosc>
+</symulacja>
+
