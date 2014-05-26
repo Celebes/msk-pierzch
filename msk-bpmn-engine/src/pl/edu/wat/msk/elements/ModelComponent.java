@@ -26,6 +26,8 @@ public abstract class ModelComponent extends BasicSimObj implements IModelCompon
 	 */
 	private String description;
 	
+	private Integer maxDlugoscKolejki;
+	
 	protected LinkedList<ZgloszenieGeneric> kolejka;
 	public MonitoredVar MVdlKolejki;
 
@@ -79,4 +81,12 @@ public abstract class ModelComponent extends BasicSimObj implements IModelCompon
         MVdlKolejki.setValue(kolejka.size());
         return b;
     }
+
+	public Integer getMaxDlugoscKolejki() {
+		return maxDlugoscKolejki;
+	}
+
+	public void setMaxDlugoscKolejki(Integer maxDlugoscKolejki) {
+		this.maxDlugoscKolejki = maxDlugoscKolejki;
+	}
 }
