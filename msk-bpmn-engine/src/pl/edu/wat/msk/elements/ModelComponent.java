@@ -56,7 +56,7 @@ public abstract class ModelComponent extends BasicSimObj implements IModelCompon
 	}
 
 	public void setListaZgloszen(List<ZgloszenieGeneric> listaZgloszen) {
-		this.kolejka = kolejka;
+		this.kolejka = new LinkedList<ZgloszenieGeneric>(listaZgloszen);
 	}
 	
 	// dodaje zgloszenie do kolejki
