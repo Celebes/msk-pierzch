@@ -1,5 +1,7 @@
-package pl.edu.wat.msk.smo_generic;
+package pl.edu.wat.msk.smo_events;
 
+import pl.edu.wat.msk.smo_generic.SmoInfiniteGeneric;
+import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 import smo.Smo;
 import smo.ZakonczObsluge;
 import smo.Zgloszenie;
@@ -34,7 +36,6 @@ public class RozpocznijObslugeInfiniteGeneric extends BasicSimEvent<SmoInfiniteG
 	@Override
 	protected void onTermination() throws SimControlException {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -46,7 +47,7 @@ public class RozpocznijObslugeInfiniteGeneric extends BasicSimEvent<SmoInfiniteG
         	// Pobierz zgloszenie
         	ZgloszenieGeneric zgl = smoParent.usun();
         	// Przerwanie niecierpliwosci
-        	zgl.koniecNiecierpliwosci.interrupt();
+        	//zgl.koniecNiecierpliwosci.interrupt();
         	// Wygeneruj czas obslugi
         	double czasObslugi = generator.normal(9.0, 1.0);
             // Zapamietaj dane monitorowane

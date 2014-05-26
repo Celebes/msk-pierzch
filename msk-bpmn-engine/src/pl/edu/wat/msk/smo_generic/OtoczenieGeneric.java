@@ -1,8 +1,6 @@
 package pl.edu.wat.msk.smo_generic;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 import pl.edu.wat.msk.distributions.AbstractDistribution;
 import pl.edu.wat.msk.distributions.Erlang;
@@ -10,7 +8,7 @@ import pl.edu.wat.msk.distributions.Normal;
 import pl.edu.wat.msk.distributions.Uniform;
 import pl.edu.wat.msk.elements.HaveNext;
 import pl.edu.wat.msk.elements.IModelComponent;
-import pl.edu.wat.msk.elements.ValidationMessage;
+import pl.edu.wat.msk.smo_events.ZglaszajGeneric;
 import pl.edu.wat.wcy.mtsk.xml_elements.Symulacja;
 import dissimlab.monitors.MonitoredVar;
 import dissimlab.simcore.SimControlException;
@@ -78,12 +76,6 @@ public class OtoczenieGeneric extends HaveNext {
 
 	public double getNextDouble() {
 		return distribution.getNextDouble();
-	}
-
-	@Override
-	public Vector<ValidationMessage> validate() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public String getId() {

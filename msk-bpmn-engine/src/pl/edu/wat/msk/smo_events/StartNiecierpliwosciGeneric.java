@@ -1,5 +1,6 @@
-package pl.edu.wat.msk.smo_generic;
+package pl.edu.wat.msk.smo_events;
 
+import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 import dissimlab.random.SimGenerator;
 import dissimlab.simcore.BasicSimEvent;
 import dissimlab.simcore.SimControlException;
@@ -39,6 +40,6 @@ public class StartNiecierpliwosciGeneric extends BasicSimEvent<ZgloszenieGeneric
 	protected void stateChange() throws SimControlException {
         System.out.println(simTime()+": Poczatek niecierpliwosci zgl. nr: " + parent.getTenNr());
         double odstep = generator.normal(15.0, 1.0);
-        parent.koniecNiecierpliwosci = new KoniecNiecierpliwosciGeneric(parent, odstep);
+        //parent.koniecNiecierpliwosci = new KoniecNiecierpliwosciGeneric(parent, odstep);
 	}
 }

@@ -1,21 +1,14 @@
 package pl.edu.wat.msk.smo_generic;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Vector;
 
-import pl.edu.wat.msk.Notification;
 import pl.edu.wat.msk.elements.HavePrevNext;
 import pl.edu.wat.msk.elements.IModelComponent;
-import pl.edu.wat.msk.elements.ValidationMessage;
-import smo.RozpocznijObslugeBis;
-import smo.ZakonczObsluge;
-import smo.ZakonczObslugeBis;
-import smo.Zgloszenie;
+import pl.edu.wat.msk.smo_events.RozpocznijObslugeInfiniteGeneric;
+import pl.edu.wat.msk.smo_events.ZakonczObslugeInfiniteGeneric;
 import dissimlab.monitors.MonitoredVar;
 import dissimlab.simcore.SimControlException;
-import dissimlab.simcore.SimEventSemaphore;
 
 public class SmoInfiniteGeneric extends HavePrevNext {
 	
@@ -55,7 +48,7 @@ public class SmoInfiniteGeneric extends HavePrevNext {
 	@Override
 	public void processing(ZgloszenieGeneric zgl) {
 		// dodaj nowo otrzymane zgloszenie do kolejki
-		int wynikDodawania = this.dodaj(zgl);
+		//int wynikDodawania = this.dodaj(zgl);
 		
 		// jesli mamy kolejke skonczona i nie udalo sie dodac, tzn. ze trzeba dac do semafora
 		/*if(kolejkaSkonczona && wynikDodawania == (-1)) {
@@ -79,12 +72,6 @@ public class SmoInfiniteGeneric extends HavePrevNext {
 				e.printStackTrace();
 			}
         }
-	}
-
-	@Override
-	public Vector<ValidationMessage> validate() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public LinkedList<ZgloszenieGeneric> getKolejka() {

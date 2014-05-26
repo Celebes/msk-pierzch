@@ -1,8 +1,5 @@
 package pl.edu.wat.msk.elements;
 
-import java.util.Vector;
-
-import pl.edu.wat.msk.Notification;
 import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 
 /**
@@ -18,11 +15,5 @@ public interface IModelComponent {
 	 *  Przetwarzanie
 	 */	
 	public void processing(ZgloszenieGeneric zgl);
-	
-	/** 
-	 *  Metoda walidacji komponentu.
-	 *  Zwraca kolekcję ewentualnych problemów spotykanych przy walidacji.
-	 */
-	public Vector<ValidationMessage> validate();
 
 }

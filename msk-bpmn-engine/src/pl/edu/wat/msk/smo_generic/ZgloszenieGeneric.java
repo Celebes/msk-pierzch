@@ -10,8 +10,8 @@ public class ZgloszenieGeneric extends BasicSimObj {
 	double czasOdniesienia;
     static int nr=0;
     int tenNr;
-    public KoniecNiecierpliwosciGeneric koniecNiecierpliwosci;
-    public HavePrevNext aktualnieObslugujacyKomponent;
+    //public KoniecNiecierpliwosciGeneric koniecNiecierpliwosci;
+    //public HavePrevNext aktualnieObslugujacyKomponent;
 
     public int getTenNr() {
 		return tenNr;
@@ -25,8 +25,8 @@ public class ZgloszenieGeneric extends BasicSimObj {
     {
         czasOdniesienia = Czas;
         setTenNr();
-        StartNiecierpliwosciGeneric stN = new StartNiecierpliwosciGeneric(this);
-        this.aktualnieObslugujacyKomponent = aktualnieObslugujacyKomponent;
+        //StartNiecierpliwosciGeneric stN = new StartNiecierpliwosciGeneric(this);
+        //this.aktualnieObslugujacyKomponent = aktualnieObslugujacyKomponent;
     }
 
     public void setCzasOdniesienia(double t)

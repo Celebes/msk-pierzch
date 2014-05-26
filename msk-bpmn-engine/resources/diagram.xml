@@ -17,14 +17,16 @@
 		</otoczenie>
 
 		<kolejka id="SMO1" nieskonczona="true" maxDlugoscKolejki="niesk">
-			<gniazdo id="G1" />
+			
 			<koniec id="niecierpliwosc1" />
 		</kolejka>
+		
+		<gniazdo id="G1" />
 
 		<kolejka id="SMO2" nieskonczona="false" maxDlugoscKolejki="N">
-			<gniazdo id="G2" />
-			<koniec id="niecierpliwosc2" />
 		</kolejka>
+		
+		<gniazdo id="G2" />
 
 		<kolejka id="SMO3" nieskonczona="false" maxDlugoscKolejki="M">
 			<gniazdo id="G3" />
