@@ -36,7 +36,7 @@ public class ZakonczObslugeInfiniteGeneric extends BasicSimEvent<SmoGeneric, Zgl
 
 	@Override
 	protected void stateChange() throws SimControlException {
-	    SmoInfiniteGeneric parent = getSimObj();
+	    SmoGeneric parent = getSimObj();
 	    
 	    if(parent.getMaxDlugoscKolejki() == null || parent.dodaj(transitionParams)) {
 	    	// gdy obsluga sie zakonczyla to przeslij zgloszenie dalej
