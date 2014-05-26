@@ -2,10 +2,12 @@ package pl.edu.wat.msk.elements;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.Semaphore;
 
 import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 import dissimlab.monitors.MonitoredVar;
 import dissimlab.simcore.BasicSimObj;
+import dissimlab.simcore.SimEventSemaphore;
 
 /**
  * Komponent budowanego modelu.
@@ -15,7 +17,11 @@ import dissimlab.simcore.BasicSimObj;
  * @version 0.0.1
  */
 public abstract class ModelComponent extends BasicSimObj implements IModelComponent {
-
+	/**
+	 * Semafor dla SMO
+	 */
+	private static final SimEventSemaphore SEMAFOR = new SimEventSemaphore("Semafor dla SMO"); 
+	
 	/**
 	 * Nazwa komponentu określona przez użytkownika.
 	 */
@@ -61,10 +67,14 @@ public abstract class ModelComponent extends BasicSimObj implements IModelCompon
 	
 	// dodaje zgloszenie do kolejki
 	// zwrocenie 0 oznacza false (to takie obejscie, bo dodaj() w SmoBis zwracalo boolean
-	public int dodaj(ZgloszenieGeneric zgl) {
-		kolejka.add(zgl);
-		MVdlKolejki.setValue(kolejka.size());
-		return kolejka.size();
+	public boolean dodaj(ZgloszenieGeneric zgl) {
+		if(maxDlugoscKolejki == null || maxDlugoscKolejki < kolejka.size()) {
+			kolejka.add(zgl);
+			MVdlKolejki.setValue(kolejka.size());
+			
+			return true;
+		}
+		return false;
 	}
 	
 	// pobiera zgloszenie z kolejki
@@ -88,5 +98,9 @@ public abstract class ModelComponent extends BasicSimObj implements IModelCompon
 
 	public void setMaxDlugoscKolejki(Integer maxDlugoscKolejki) {
 		this.maxDlugoscKolejki = maxDlugoscKolejki;
+	}
+	
+	public static SimEventSemaphore getSemafor() {
+		return SEMAFOR;
 	}
 }
