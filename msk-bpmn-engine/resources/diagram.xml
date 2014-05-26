@@ -1,37 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <symulacja>
 	<czynnosc>
-		<otoczenie id="generator1" dlugoscGenerowania=""
-			maxIloscZgloszen="">
+		<otoczenie id="generator1" dlugoscGenerowania="" maxIloscZgloszen="">
 			<rozklad id="rozklad1" rodzaj="erlang">
 				<param nazwa="alfa" wartosc="bbb" />
 				<param nazwa="beta" wartosc="ccc" />
 			</rozklad>
 		</otoczenie>
 
-		<otoczenie id="generator2" dlugoscGenerowania=""
-			maxIloscZgloszen="">
+		<otoczenie id="generator2" dlugoscGenerowania="" maxIloscZgloszen="">
 			<rozklad id="rozklad2" rodzaj="jednostajny">
 				<param nazwa="a" wartosc="aaaa" />
+				<param nazwa="beta" wartosc="ccc" />
 			</rozklad>
 		</otoczenie>
 
-		<kolejka id="SMO1" nieskonczona="true" maxDlugoscKolejki="niesk">
-			
-			<koniec id="niecierpliwosc1" />
-		</kolejka>
+		<kolejka id="SMO1" nieskonczona="true" maxDlugoscKolejki="niesk" />
 		
 		<gniazdo id="G1" />
 
-		<kolejka id="SMO2" nieskonczona="false" maxDlugoscKolejki="N">
-		</kolejka>
+		<kolejka id="SMO2" nieskonczona="false" maxDlugoscKolejki="N" />
 		
 		<gniazdo id="G2" />
-
-		<kolejka id="SMO3" nieskonczona="false" maxDlugoscKolejki="M">
-			<gniazdo id="G3" />
-			<koniec id="niecierpliwosc3" />
-		</kolejka>
 
 		<bramka id="bramka1" rodzaj="OR" />
 
