@@ -4,10 +4,10 @@ import java.util.Vector;
 
 import dissimlab.monitors.MonitoredVar;
 import dissimlab.simcore.SimControlException;
-
 import pl.edu.wat.msk.Notification;
 import pl.edu.wat.msk.distributions.IDistribution;
 import pl.edu.wat.msk.events.ThrowNotificationEvent;
+import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 
 /**
  * źródło generujące zgłoszenia dla systemu.
@@ -113,5 +113,11 @@ public class Source extends HavePrevNext {
 
 	public void setThrowNotification(ThrowNotificationEvent throwNotification) {
 		this.throwNotification = throwNotification;
+	}
+
+	@Override
+	public void putToNexts(ZgloszenieGeneric zgl) {
+		// TODO Auto-generated method stub
+		
 	}
 }

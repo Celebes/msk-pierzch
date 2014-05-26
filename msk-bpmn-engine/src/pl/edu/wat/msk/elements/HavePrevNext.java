@@ -3,6 +3,7 @@ package pl.edu.wat.msk.elements;
 import java.util.ArrayList;
 
 import pl.edu.wat.msk.Notification;
+import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 
 /**
  * @author Mariusz Kielan
@@ -57,9 +58,9 @@ public abstract class HavePrevNext extends ModelComponent implements IHaveNext, 
 	 * Może być przysłaniana w miarę potrzeb w każdej podklasie.
 	 * @see pl.edu.wat.msk.elements.IHaveNext#putToNexts(pl.edu.wat.msk.Notification)
 	 */
-	public void putToNexts(Notification notification) {
+	public void putToNexts(ZgloszenieGeneric zgl) {
 		for (IModelComponent next : nexts) {
-			next.processing(notification);
+			next.processing(zgl);
 		}
 	}
 }

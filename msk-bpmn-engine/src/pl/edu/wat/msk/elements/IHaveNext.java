@@ -3,6 +3,7 @@ package pl.edu.wat.msk.elements;
 import java.util.ArrayList;
 
 import pl.edu.wat.msk.Notification;
+import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 
 /**
  * @author Mariusz Kielan
@@ -24,5 +25,5 @@ public interface IHaveNext {
 	 * Podaje zgłoszenie do następników.
 	 * @param notification
 	 */
-	public void putToNexts(Notification notification);
+	public void putToNexts(ZgloszenieGeneric zgl);
 }

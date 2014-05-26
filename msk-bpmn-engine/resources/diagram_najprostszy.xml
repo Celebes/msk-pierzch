@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<symulacja>
+	<czynnosc>
+		<otoczenie id="generator1" dlugoscGenerowania="" maxIloscZgloszen="">
+			<rozklad id="rozklad1" rodzaj="erlang">
+				<param nazwa="a" wartosc="1" />
+				<param nazwa="b" wartosc="2.0" />
+			</rozklad>
+		</otoczenie>
+
+		<kolejka id="SMO1" nieskonczona="true" maxDlugoscKolejki="niesk">
+			<gniazdo id="G1" />
+			<koniec id="niecierpliwosc1" />
+		</kolejka>
+
+		<polaczenie id="linia1" od="generator1" do="SMO1" />
+
+	</czynnosc>
+</symulacja>

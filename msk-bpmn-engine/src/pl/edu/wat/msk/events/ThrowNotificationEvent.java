@@ -37,7 +37,7 @@ public class ThrowNotificationEvent
 
 	@Override
 	protected void stateChange() throws SimControlException {
-		parent = getSimObj();
+		/*parent = getSimObj();
 		
 		Notification n = new Notification(simTime());
 		parent.putToNexts(n);
@@ -47,7 +47,7 @@ public class ThrowNotificationEvent
 		//nowe zgłoszenie, po wygenerowanym opóźnieniu
 		double deley = parent.getGenerateDistribution().getNextDouble();
 		parent.durningNotificationTimeMV.setValue(deley);
-		parent.setThrowNotification(new ThrowNotificationEvent(parent, deley));
+		parent.setThrowNotification(new ThrowNotificationEvent(parent, deley));*/
 	}
 
 	@Override

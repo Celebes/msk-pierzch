@@ -3,6 +3,7 @@ package pl.edu.wat.msk.elements;
 import java.util.Vector;
 
 import pl.edu.wat.msk.Notification;
+import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 
 /**
  * Je?li: AND - zg?oszenie przechodzi tylko gdy dojd? z innych wej?? (razem z
@@ -37,8 +38,14 @@ public class LogicGate extends HavePrevNext {
 	}
 
 	@Override
-	public void processing(Notification notification) {
+	public void processing(ZgloszenieGeneric zgl) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void putToNexts(ZgloszenieGeneric zgl) {
+		// TODO Auto-generated method stub
+		
 	}
 }

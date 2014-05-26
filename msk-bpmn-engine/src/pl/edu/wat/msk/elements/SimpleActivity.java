@@ -6,6 +6,7 @@ import java.util.Vector;
 import dissimlab.monitors.MonitoredVar;
 import pl.edu.wat.msk.Notification;
 import pl.edu.wat.msk.distributions.IDistribution;
+import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 
 /**
  * 
@@ -47,7 +48,13 @@ public class SimpleActivity extends HavePrevNext {
 	}
 	
 	@Override
-	public void processing(Notification notification) {
+	public void processing(ZgloszenieGeneric zgl) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void putToNexts(ZgloszenieGeneric zgl) {
 		// TODO Auto-generated method stub
 		
 	}

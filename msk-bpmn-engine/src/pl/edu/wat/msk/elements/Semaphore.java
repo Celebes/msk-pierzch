@@ -3,6 +3,7 @@ package pl.edu.wat.msk.elements;
 import java.util.Vector;
 
 import pl.edu.wat.msk.Notification;
+import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 import dissimlab.simcore.SimEventSemaphore;
 
 /**
@@ -26,7 +27,13 @@ public class Semaphore extends HavePrevNext implements IHaveNext {
 	}
 
 	@Override
-	public void processing(Notification notification) {
+	public void processing(ZgloszenieGeneric zgl) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void putToNexts(ZgloszenieGeneric zgl) {
 		// TODO Auto-generated method stub
 		
 	}

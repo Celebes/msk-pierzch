@@ -1,6 +1,7 @@
 package pl.edu.wat.msk.elements;
 
 import pl.edu.wat.msk.Notification;
+import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 import dissimlab.simcore.BasicSimObj;
 
 /**
@@ -39,6 +40,6 @@ public abstract class ModelComponent extends BasicSimObj implements IModelCompon
 	}
 	
 	@Override
-	public void processing(Notification notification) {
+	public void processing(ZgloszenieGeneric zgl) {
 	}
 }

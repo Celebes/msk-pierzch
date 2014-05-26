@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import pl.edu.wat.msk.Notification;
+import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 
 /** 
  *  Aby uruchomić z?o?on? aktywność konieczne jest przechowywanie przez niego 
@@ -79,7 +80,7 @@ public class CompositeActivity extends HavePrevNext {
 	 * Przekazanie zgłoszenia do źródła dla pod modelu.
 	 */
 	@Override
-	public void processing(Notification notification) {
+	public void processing(ZgloszenieGeneric zgl) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -90,6 +91,12 @@ public class CompositeActivity extends HavePrevNext {
 	
 	public void setModelComponents(ArrayList<IModelComponent> modelComponents) {
 		this.modelComponents = modelComponents;
+	}
+
+	@Override
+	public void putToNexts(ZgloszenieGeneric zgl) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

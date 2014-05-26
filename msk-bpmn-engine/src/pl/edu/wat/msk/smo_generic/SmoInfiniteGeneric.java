@@ -1,0 +1,185 @@
+package pl.edu.wat.msk.smo_generic;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Vector;
+
+import pl.edu.wat.msk.Notification;
+import pl.edu.wat.msk.elements.HavePrevNext;
+import pl.edu.wat.msk.elements.IModelComponent;
+import pl.edu.wat.msk.elements.ValidationMessage;
+import smo.RozpocznijObslugeBis;
+import smo.ZakonczObsluge;
+import smo.ZakonczObslugeBis;
+import smo.Zgloszenie;
+import dissimlab.monitors.MonitoredVar;
+import dissimlab.simcore.SimControlException;
+import dissimlab.simcore.SimEventSemaphore;
+
+public class SmoInfiniteGeneric extends HavePrevNext {
+	
+	private String id;
+	private LinkedList <ZgloszenieGeneric> kolejka;
+	private boolean wolne = true;
+	public RozpocznijObslugeInfiniteGeneric rozpocznijObsluge;
+    public ZakonczObslugeInfiniteGeneric zakonczObsluge;
+    public MonitoredVar MVczasy_obslugi;
+    public MonitoredVar MVczasy_oczekiwania;
+    public MonitoredVar MVdlKolejki;
+    public MonitoredVar MVutraconeZgl;
+	
+	// tylko dla skonczonych kolejek
+    // private boolean kolejkaSkonczona = false;
+	// private int maxDlKolejki;
+	// private SimEventSemaphore semafor;
+	
+	// konstruktor dla ograniczonej kolejki
+	/*public SmoInfiniteGeneric(String id, int maxDlKolejki) throws SimControlException {
+		this(id);
+		this.kolejkaSkonczona = true;
+		this.maxDlKolejki = maxDlKolejki;
+		this.semafor = new SimEventSemaphore("Semafor dla SMO");
+	}*/
+	
+	// konstruktor dla nieskonczonej kolejki
+	public SmoInfiniteGeneric(String id) {
+		kolejka = new LinkedList <ZgloszenieGeneric>();
+		MVczasy_obslugi = new MonitoredVar();
+        MVczasy_oczekiwania = new MonitoredVar();
+        MVdlKolejki = new MonitoredVar();
+        MVutraconeZgl = new MonitoredVar();
+	}
+	
+	@Override
+	public void processing(ZgloszenieGeneric zgl) {
+		// dodaj nowo otrzymane zgloszenie do kolejki
+		int wynikDodawania = this.dodaj(zgl);
+		
+		// jesli mamy kolejke skonczona i nie udalo sie dodac, tzn. ze trzeba dac do semafora
+		/*if(kolejkaSkonczona && wynikDodawania == (-1)) {
+			// trzeba dodac do semafora, bo brakuje miejsca
+			try {
+				this.zakonczObsluge = new ZakonczObslugeInfiniteGeneric(this, this.semafor, zgl);
+				System.out.println(simTime()+": Oczekiwanie na semaforze w SMO" + this.getId() + " - zgl. nr: " + zgl.getTenNr());
+			} catch (SimControlException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}*/
+		
+		// jesli mamy kolejke skonczona to sprobuj przeniesc cos z semafora do kolejki
+		
+		// jesli jest zgloszenie i gniazdo jest wolne to uruchom obsluge
+		if (this.kolejka.size() == 1 && this.isWolne()) {
+        	try {
+				this.rozpocznijObsluge = new RozpocznijObslugeInfiniteGeneric(this);
+			} catch (SimControlException e) {
+				e.printStackTrace();
+			}
+        }
+	}
+
+	// dodaje zgloszenie do kolejki
+	// zwrocenie 0 oznacza false (to takie obejscie, bo dodaj() w SmoBis zwracalo boolean
+	public int dodaj(ZgloszenieGeneric zgl) {
+
+		kolejka.add(zgl);
+		MVdlKolejki.setValue(kolejka.size());
+		return kolejka.size();
+
+	}
+	
+	// pobiera zgloszenie z kolejki
+	public ZgloszenieGeneric usun() {
+		ZgloszenieGeneric zgl = (ZgloszenieGeneric) kolejka.removeFirst();
+        MVdlKolejki.setValue(kolejka.size());
+        return zgl;
+	}
+	
+	// pobiera wskazane zgloszenie z kolejki
+	public boolean usunWskazany(ZgloszenieGeneric zgl)
+    {
+    	Boolean b= kolejka.remove(zgl);
+        MVdlKolejki.setValue(kolejka.size());
+        return b;
+    }
+
+	@Override
+	public Vector<ValidationMessage> validate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public LinkedList<ZgloszenieGeneric> getKolejka() {
+		return kolejka;
+	}
+
+	public void setKolejka(LinkedList<ZgloszenieGeneric> kolejka) {
+		this.kolejka = kolejka;
+	}
+
+	public boolean isWolne() {
+		return wolne;
+	}
+
+	public void setWolne(boolean wolne) {
+		this.wolne = wolne;
+	}
+
+	public RozpocznijObslugeInfiniteGeneric getRozpocznijObsluge() {
+		return rozpocznijObsluge;
+	}
+
+	public void setRozpocznijObsluge(RozpocznijObslugeInfiniteGeneric rozpocznijObsluge) {
+		this.rozpocznijObsluge = rozpocznijObsluge;
+	}
+
+	public ZakonczObslugeInfiniteGeneric getZakonczObsluge() {
+		return zakonczObsluge;
+	}
+
+	public void setZakonczObsluge(ZakonczObslugeInfiniteGeneric zakonczObsluge) {
+		this.zakonczObsluge = zakonczObsluge;
+	}
+
+	public MonitoredVar getMVczasy_obslugi() {
+		return MVczasy_obslugi;
+	}
+
+	public void setMVczasy_obslugi(MonitoredVar mVczasy_obslugi) {
+		MVczasy_obslugi = mVczasy_obslugi;
+	}
+
+	public MonitoredVar getMVczasy_oczekiwania() {
+		return MVczasy_oczekiwania;
+	}
+
+	public void setMVczasy_oczekiwania(MonitoredVar mVczasy_oczekiwania) {
+		MVczasy_oczekiwania = mVczasy_oczekiwania;
+	}
+
+	public MonitoredVar getMVdlKolejki() {
+		return MVdlKolejki;
+	}
+
+	public void setMVdlKolejki(MonitoredVar mVdlKolejki) {
+		MVdlKolejki = mVdlKolejki;
+	}
+
+	public MonitoredVar getMVutraconeZgl() {
+		return MVutraconeZgl;
+	}
+
+	public void setMVutraconeZgl(MonitoredVar mVutraconeZgl) {
+		MVutraconeZgl = mVutraconeZgl;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+}
