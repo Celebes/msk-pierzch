@@ -25,14 +25,12 @@ public class SmoGeneric extends HavePrevNext {
 	
 	// tylko dla skonczonych kolejek
     private boolean kolejkaSkonczona = false;
-	private SimEventSemaphore semafor;
 	
 	// konstruktor dla ograniczonej kolejki
 	public SmoGeneric(String id, int maxDlKolejki) throws SimControlException {
 		this(id);
 		this.kolejkaSkonczona = true;
 		this.setMaxDlugoscKolejki(maxDlKolejki);
-		this.semafor = new SimEventSemaphore("Semafor dla SMO");
 	}
 	
 	// konstruktor dla nieskonczonej kolejki
@@ -157,14 +155,6 @@ public class SmoGeneric extends HavePrevNext {
 
 	public void setKolejkaSkonczona(boolean kolejkaSkonczona) {
 		this.kolejkaSkonczona = kolejkaSkonczona;
-	}
-
-	public SimEventSemaphore getSemafor() {
-		return semafor;
-	}
-
-	public void setSemafor(SimEventSemaphore semafor) {
-		this.semafor = semafor;
 	}
 
 }
