@@ -9,8 +9,9 @@ import pl.edu.wat.msk.smo_events.RozpocznijObslugeInfiniteGeneric;
 import pl.edu.wat.msk.smo_events.ZakonczObslugeInfiniteGeneric;
 import dissimlab.monitors.MonitoredVar;
 import dissimlab.simcore.SimControlException;
+import dissimlab.simcore.SimEventSemaphore;
 
-public class SmoInfiniteGeneric extends HavePrevNext {
+public class SmoGeneric extends HavePrevNext {
 	
 	private String id;
 	//private LinkedList <ZgloszenieGeneric> kolejka;
@@ -23,20 +24,19 @@ public class SmoInfiniteGeneric extends HavePrevNext {
     public MonitoredVar MVutraconeZgl;
 	
 	// tylko dla skonczonych kolejek
-    // private boolean kolejkaSkonczona = false;
-	// private int maxDlKolejki;
-	// private SimEventSemaphore semafor;
+    private boolean kolejkaSkonczona = false;
+	private SimEventSemaphore semafor;
 	
 	// konstruktor dla ograniczonej kolejki
-	/*public SmoInfiniteGeneric(String id, int maxDlKolejki) throws SimControlException {
+	public SmoGeneric(String id, int maxDlKolejki) throws SimControlException {
 		this(id);
 		this.kolejkaSkonczona = true;
-		this.maxDlKolejki = maxDlKolejki;
+		this.setMaxDlugoscKolejki(maxDlKolejki);
 		this.semafor = new SimEventSemaphore("Semafor dla SMO");
-	}*/
+	}
 	
 	// konstruktor dla nieskonczonej kolejki
-	public SmoInfiniteGeneric(String id) {
+	public SmoGeneric(String id) {
 		this.id = id;
 		this.kolejka = new LinkedList <ZgloszenieGeneric>();
 		MVczasy_obslugi = new MonitoredVar();
@@ -149,6 +149,22 @@ public class SmoInfiniteGeneric extends HavePrevNext {
 	@Override
 	public void setNext(List<IModelComponent> next) {
 		this.nexts = next;
+	}
+
+	public boolean isKolejkaSkonczona() {
+		return kolejkaSkonczona;
+	}
+
+	public void setKolejkaSkonczona(boolean kolejkaSkonczona) {
+		this.kolejkaSkonczona = kolejkaSkonczona;
+	}
+
+	public SimEventSemaphore getSemafor() {
+		return semafor;
+	}
+
+	public void setSemafor(SimEventSemaphore semafor) {
+		this.semafor = semafor;
 	}
 
 }

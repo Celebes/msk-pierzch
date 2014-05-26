@@ -1,6 +1,6 @@
 package pl.edu.wat.msk.smo_events;
 
-import pl.edu.wat.msk.smo_generic.SmoInfiniteGeneric;
+import pl.edu.wat.msk.smo_generic.SmoGeneric;
 import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 import smo.RozpocznijObsluge;
 import smo.RozpocznijObslugeBis;
@@ -11,17 +11,17 @@ import dissimlab.simcore.BasicSimEvent;
 import dissimlab.simcore.SimControlException;
 import dissimlab.simcore.SimEventSemaphore;
 
-public class ZakonczObslugeInfiniteGeneric extends BasicSimEvent<SmoInfiniteGeneric, ZgloszenieGeneric>
+public class ZakonczObslugeInfiniteGeneric extends BasicSimEvent<SmoGeneric, ZgloszenieGeneric>
 {
-    private SmoInfiniteGeneric smoParent;
+    private SmoGeneric smoParent;
 
-    public ZakonczObslugeInfiniteGeneric(SmoInfiniteGeneric parent, double delay, ZgloszenieGeneric zgl) throws SimControlException
+    public ZakonczObslugeInfiniteGeneric(SmoGeneric parent, double delay, ZgloszenieGeneric zgl) throws SimControlException
     {
     	super(parent, delay, zgl);
         this.smoParent = parent;
     }
 
-    public ZakonczObslugeInfiniteGeneric(SmoInfiniteGeneric parent, SimEventSemaphore semafor, ZgloszenieGeneric zgl) throws SimControlException
+    public ZakonczObslugeInfiniteGeneric(SmoGeneric parent, SimEventSemaphore semafor, ZgloszenieGeneric zgl) throws SimControlException
     {
     	super(parent, semafor, zgl);
         this.smoParent = parent;

@@ -12,10 +12,11 @@ import javax.xml.bind.Unmarshaller;
 
 import dissimlab.simcore.SimControlException;
 import pl.edu.wat.msk.smo_generic.OtoczenieGeneric;
-import pl.edu.wat.msk.smo_generic.SmoInfiniteGeneric;
+import pl.edu.wat.msk.smo_generic.SmoGeneric;
 import pl.edu.wat.wcy.mtsk.xml_elements.Symulacja;
 import pl.edu.wat.wcy.mtsk.xml_elements.Symulacja.Czynnosc.Kolejka;
 import pl.edu.wat.wcy.mtsk.xml_elements.Symulacja.Czynnosc.Otoczenie;
+import sun.applet.Main;
 
 public class XmlHelper {
 	
@@ -43,15 +44,24 @@ public class XmlHelper {
 		return wygenerowaneOtoczenia;
 	}
 
-	public static List<SmoInfiniteGeneric> generujKolejkiNieskonczone(List<Kolejka> kolejka) {
-		List<SmoInfiniteGeneric> wygenerowaneKolejkiNieskonczone = new ArrayList<>();
+	public static List<SmoGeneric> generujKolejki(List<Kolejka> kolejka) throws SimControlException {
+		List<SmoGeneric> wygenerowaneKolejki = new ArrayList<>();
 		
 		for(Kolejka k : kolejka) {
 			System.out.println(k.getId());
-			wygenerowaneKolejkiNieskonczone.add(new SmoInfiniteGeneric(k.getId()));
+			
+			// sprawdz czy skonczona czy nie
+			if(k.isNieskonczona()) {
+				System.out.println("Generuje nieskonczona");
+				wygenerowaneKolejki.add(new SmoGeneric(k.getId()));
+			} else {
+				int maxDl = Integer.parseInt(k.getMaxDlugoscKolejki());
+				System.out.println("Generuje skonczona o dlugosci: " + maxDl);
+				wygenerowaneKolejki.add(new SmoGeneric(k.getId(), maxDl));
+			}
 		}
 		
-		return wygenerowaneKolejkiNieskonczone;
+		return wygenerowaneKolejki;
 	}
 	
 }

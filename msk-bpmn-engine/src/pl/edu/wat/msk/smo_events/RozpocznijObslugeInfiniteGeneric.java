@@ -1,6 +1,6 @@
 package pl.edu.wat.msk.smo_events;
 
-import pl.edu.wat.msk.smo_generic.SmoInfiniteGeneric;
+import pl.edu.wat.msk.smo_generic.SmoGeneric;
 import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 import smo.Smo;
 import smo.ZakonczObsluge;
@@ -9,18 +9,18 @@ import dissimlab.random.SimGenerator;
 import dissimlab.simcore.BasicSimEvent;
 import dissimlab.simcore.SimControlException;
 
-public class RozpocznijObslugeInfiniteGeneric extends BasicSimEvent<SmoInfiniteGeneric, ZgloszenieGeneric> {
-	private SmoInfiniteGeneric smoParent;
+public class RozpocznijObslugeInfiniteGeneric extends BasicSimEvent<SmoGeneric, ZgloszenieGeneric> {
+	private SmoGeneric smoParent;
     private SimGenerator generator;
 
-    public RozpocznijObslugeInfiniteGeneric(SmoInfiniteGeneric parent, double delay) throws SimControlException
+    public RozpocznijObslugeInfiniteGeneric(SmoGeneric parent, double delay) throws SimControlException
     {
     	super(parent, delay);
     	generator = new SimGenerator();
         this.smoParent = parent;
     }
 
-    public RozpocznijObslugeInfiniteGeneric(SmoInfiniteGeneric parent) throws SimControlException
+    public RozpocznijObslugeInfiniteGeneric(SmoGeneric parent) throws SimControlException
     {
     	super(parent);
     	generator = new SimGenerator();

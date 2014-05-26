@@ -31,21 +31,14 @@
               </xsd:element>
               <xsd:element maxOccurs="unbounded" name="kolejka">
                 <xsd:complexType>
-                  <xsd:sequence>
-                    <xsd:element name="gniazdo">
-                      <xsd:complexType>
-                        <xsd:attribute name="id" type="xsd:string" />
-                      </xsd:complexType>
-                    </xsd:element>
-                    <xsd:element name="koniec">
-                      <xsd:complexType>
-                        <xsd:attribute name="id" type="xsd:string" />
-                      </xsd:complexType>
-                    </xsd:element>
-                  </xsd:sequence>
                   <xsd:attribute name="id" type="xsd:string" />
                   <xsd:attribute name="nieskonczona" type="xsd:boolean" />
                   <xsd:attribute name="maxDlugoscKolejki" type="xsd:string" />
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element maxOccurs="unbounded" name="gniazdo">
+                <xsd:complexType>
+                  <xsd:attribute name="id" type="xsd:string" />
                 </xsd:complexType>
               </xsd:element>
               <xsd:element name="bramka">

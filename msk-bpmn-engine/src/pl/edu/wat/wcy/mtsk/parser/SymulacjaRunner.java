@@ -7,7 +7,7 @@ import java.util.List;
 import javax.xml.bind.JAXBException;
 
 import pl.edu.wat.msk.smo_generic.OtoczenieGeneric;
-import pl.edu.wat.msk.smo_generic.SmoInfiniteGeneric;
+import pl.edu.wat.msk.smo_generic.SmoGeneric;
 import pl.edu.wat.wcy.mtsk.xml_elements.Symulacja;
 import dissimlab.simcore.SimControlEvent;
 import dissimlab.simcore.SimControlException;
@@ -21,8 +21,11 @@ public class SymulacjaRunner {
 			//Symulacja symulacja = XmlHelper.generujSymulacjeZPliku("./diagram_prosty.xml");
 			//uruchomSymulacje(symulacja);
 			
-			Symulacja symulacja = XmlHelper.generujSymulacjeZPliku("./diagram_najprostszy.xml");
-			uruchomSymulacjeNajprostsza(symulacja);
+			//Symulacja symulacja = XmlHelper.generujSymulacjeZPliku("./diagram_najprostszy.xml");
+			//uruchomSymulacjeNajprostsza(symulacja);
+			
+			Symulacja symulacja = XmlHelper.generujSymulacjeZPliku("./diagram_z_or.xml");
+			uruchomSymulacjeZOrem(symulacja);
 			
 		} catch (JAXBException e) {
 			e.printStackTrace();
@@ -33,6 +36,33 @@ public class SymulacjaRunner {
 		}
 	}
 	
+	private static void uruchomSymulacjeZOrem(Symulacja symulacja) throws SimControlException {
+		SimManager model = SimManager.getInstance();
+		
+		// -------- INICJALIZACJA Z XML --------
+		
+		// generacja SMO (wszystkich)
+		List<SmoGeneric> wygenerowaneNieskonczoneSMO = XmlHelper.generujKolejki(symulacja.getCzynnosc().getKolejka());
+		
+		// utworzenie otoczenia, tutaj juz zaczynaja pojawiac sie pierwsze zdarzenia
+		List<OtoczenieGeneric> wygenerowaneOtoczenia = XmlHelper.generujOtoczenia(symulacja.getCzynnosc().getOtoczenie());
+		
+		// polaczenia!!!
+		wygenerowaneOtoczenia.get(0).addNext(wygenerowaneNieskonczoneSMO.get(0));
+		
+		// -------------------------------------
+		
+		SimControlEvent stopEvent = new SimControlEvent(60.0, SimControlStatus.STOPSIMULATION);
+		// Badanie czasu trwania eksperymentu - pocz�tek
+		long czst = new Date().getTime();
+		// Uruchomienie symulacji za po�rednictwem metody "start" z
+		model.startSimulation();
+		// Badanie czasu trwania eksperymentu - koniec
+		czst = new Date().getTime() - czst;
+		// Wyniki
+		System.out.println("Czas trwania eksperymentu: " + czst);
+	}
+
 	public static void uruchomSymulacje(Symulacja symulacja) throws SimControlException {
 		SimManager model = SimManager.getInstance();
 
@@ -47,7 +77,7 @@ public class SymulacjaRunner {
 		// -------- INICJALIZACJA Z XML --------
 		
 		// generacja SMO nieskonczonego
-		List<SmoInfiniteGeneric> wygenerowaneNieskonczoneSMO = XmlHelper.generujKolejkiNieskonczone(symulacja.getCzynnosc().getKolejka());
+		List<SmoGeneric> wygenerowaneNieskonczoneSMO = XmlHelper.generujKolejki(symulacja.getCzynnosc().getKolejka());
 		
 		// utworzenie otoczenia, tutaj juz zaczynaja pojawiac sie pierwsze zdarzenia
 		List<OtoczenieGeneric> wygenerowaneOtoczenia = XmlHelper.generujOtoczenia(symulacja.getCzynnosc().getOtoczenie());
