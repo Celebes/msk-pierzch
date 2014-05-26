@@ -1,8 +1,7 @@
 package pl.edu.wat.msk.smo_generic;
 
-import smo.KoniecNiecierpliwosci;
-import smo.Smo;
-import smo.StartNiecierpliwosci;
+import pl.edu.wat.msk.elements.HavePrevNext;
+import pl.edu.wat.msk.elements.IModelComponent;
 import dissimlab.simcore.BasicSimObj;
 import dissimlab.simcore.SimControlException;
 
@@ -12,6 +11,7 @@ public class ZgloszenieGeneric extends BasicSimObj {
     static int nr=0;
     int tenNr;
     public KoniecNiecierpliwosciGeneric koniecNiecierpliwosci;
+    public HavePrevNext aktualnieObslugujacyKomponent;
 
     public int getTenNr() {
 		return tenNr;
@@ -21,11 +21,12 @@ public class ZgloszenieGeneric extends BasicSimObj {
 		this.tenNr = nr++;
 	}
 
-	public ZgloszenieGeneric(double Czas) throws SimControlException
+	public ZgloszenieGeneric(double Czas, HavePrevNext aktualnieObslugujacyKomponent) throws SimControlException
     {
         czasOdniesienia = Czas;
         setTenNr();
         StartNiecierpliwosciGeneric stN = new StartNiecierpliwosciGeneric(this);
+        this.aktualnieObslugujacyKomponent = aktualnieObslugujacyKomponent;
     }
 
     public void setCzasOdniesienia(double t)

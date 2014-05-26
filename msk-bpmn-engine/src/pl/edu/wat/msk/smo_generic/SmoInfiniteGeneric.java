@@ -2,6 +2,7 @@ package pl.edu.wat.msk.smo_generic;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Vector;
 
 import pl.edu.wat.msk.Notification;
@@ -19,13 +20,13 @@ import dissimlab.simcore.SimEventSemaphore;
 public class SmoInfiniteGeneric extends HavePrevNext {
 	
 	private String id;
-	private LinkedList <ZgloszenieGeneric> kolejka;
+	//private LinkedList <ZgloszenieGeneric> kolejka;
 	private boolean wolne = true;
 	public RozpocznijObslugeInfiniteGeneric rozpocznijObsluge;
     public ZakonczObslugeInfiniteGeneric zakonczObsluge;
     public MonitoredVar MVczasy_obslugi;
     public MonitoredVar MVczasy_oczekiwania;
-    public MonitoredVar MVdlKolejki;
+    
     public MonitoredVar MVutraconeZgl;
 	
 	// tylko dla skonczonych kolejek
@@ -43,7 +44,8 @@ public class SmoInfiniteGeneric extends HavePrevNext {
 	
 	// konstruktor dla nieskonczonej kolejki
 	public SmoInfiniteGeneric(String id) {
-		kolejka = new LinkedList <ZgloszenieGeneric>();
+		this.id = id;
+		this.kolejka = new LinkedList <ZgloszenieGeneric>();
 		MVczasy_obslugi = new MonitoredVar();
         MVczasy_oczekiwania = new MonitoredVar();
         MVdlKolejki = new MonitoredVar();
@@ -78,31 +80,6 @@ public class SmoInfiniteGeneric extends HavePrevNext {
 			}
         }
 	}
-
-	// dodaje zgloszenie do kolejki
-	// zwrocenie 0 oznacza false (to takie obejscie, bo dodaj() w SmoBis zwracalo boolean
-	public int dodaj(ZgloszenieGeneric zgl) {
-
-		kolejka.add(zgl);
-		MVdlKolejki.setValue(kolejka.size());
-		return kolejka.size();
-
-	}
-	
-	// pobiera zgloszenie z kolejki
-	public ZgloszenieGeneric usun() {
-		ZgloszenieGeneric zgl = (ZgloszenieGeneric) kolejka.removeFirst();
-        MVdlKolejki.setValue(kolejka.size());
-        return zgl;
-	}
-	
-	// pobiera wskazane zgloszenie z kolejki
-	public boolean usunWskazany(ZgloszenieGeneric zgl)
-    {
-    	Boolean b= kolejka.remove(zgl);
-        MVdlKolejki.setValue(kolejka.size());
-        return b;
-    }
 
 	@Override
 	public Vector<ValidationMessage> validate() {
@@ -180,6 +157,11 @@ public class SmoInfiniteGeneric extends HavePrevNext {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	@Override
+	public void setNext(List<IModelComponent> next) {
+		this.nexts = next;
 	}
 
 }

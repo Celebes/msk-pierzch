@@ -1,8 +1,8 @@
 package pl.edu.wat.msk.elements;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import pl.edu.wat.msk.Notification;
 import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 
 /**
@@ -13,17 +13,17 @@ import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
  */
 public abstract class HaveNext extends ModelComponent implements IHaveNext {
 
-	protected ArrayList<IModelComponent> nexts;
+	protected List<IModelComponent> nexts;
 	
 	public HaveNext() {
 		nexts = new ArrayList<>();
 	}
 
-	public ArrayList<IModelComponent> getNext() {
+	public List<IModelComponent> getNext() {
 		return nexts;
 	}
 	
-	public void setNext(ArrayList<IModelComponent> next) {
+	public void setNext(List<IModelComponent> next) {
 		nexts = next;
 	}
 

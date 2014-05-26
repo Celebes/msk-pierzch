@@ -1,7 +1,10 @@
 package pl.edu.wat.msk.elements;
 
-import pl.edu.wat.msk.Notification;
+import java.util.LinkedList;
+import java.util.List;
+
 import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
+import dissimlab.monitors.MonitoredVar;
 import dissimlab.simcore.BasicSimObj;
 
 /**
@@ -22,6 +25,9 @@ public abstract class ModelComponent extends BasicSimObj implements IModelCompon
 	 * Opis komponentu określony przez użytkownika.
 	 */
 	private String description;
+	
+	protected LinkedList<ZgloszenieGeneric> kolejka;
+	public MonitoredVar MVdlKolejki;
 
 	public String getName() {
 		return name;
@@ -42,4 +48,35 @@ public abstract class ModelComponent extends BasicSimObj implements IModelCompon
 	@Override
 	public void processing(ZgloszenieGeneric zgl) {
 	}
+
+	public List<ZgloszenieGeneric> getListaZgloszen() {
+		return kolejka;
+	}
+
+	public void setListaZgloszen(List<ZgloszenieGeneric> listaZgloszen) {
+		this.kolejka = kolejka;
+	}
+	
+	// dodaje zgloszenie do kolejki
+	// zwrocenie 0 oznacza false (to takie obejscie, bo dodaj() w SmoBis zwracalo boolean
+	public int dodaj(ZgloszenieGeneric zgl) {
+		kolejka.add(zgl);
+		MVdlKolejki.setValue(kolejka.size());
+		return kolejka.size();
+	}
+	
+	// pobiera zgloszenie z kolejki
+	public ZgloszenieGeneric usun() {
+		ZgloszenieGeneric zgl = (ZgloszenieGeneric) kolejka.removeFirst();
+        MVdlKolejki.setValue(kolejka.size());
+        return zgl;
+	}
+	
+	// pobiera wskazane zgloszenie z kolejki
+	public boolean usunWskazany(ZgloszenieGeneric zgl)
+    {
+    	Boolean b= kolejka.remove(zgl);
+        MVdlKolejki.setValue(kolejka.size());
+        return b;
+    }
 }

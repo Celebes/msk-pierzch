@@ -52,6 +52,8 @@ public class SymulacjaRunner {
 		// utworzenie otoczenia, tutaj juz zaczynaja pojawiac sie pierwsze zdarzenia
 		List<OtoczenieGeneric> wygenerowaneOtoczenia = XmlHelper.generujOtoczenia(symulacja.getCzynnosc().getOtoczenie());
 		
+		// polaczenia!!!
+		wygenerowaneOtoczenia.get(0).addNext(wygenerowaneNieskonczoneSMO.get(0));
 		
 		// -------------------------------------
 		

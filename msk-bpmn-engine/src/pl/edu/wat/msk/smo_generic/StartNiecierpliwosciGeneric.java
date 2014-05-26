@@ -37,8 +37,8 @@ public class StartNiecierpliwosciGeneric extends BasicSimEvent<ZgloszenieGeneric
 
 	@Override
 	protected void stateChange() throws SimControlException {
-        System.out.println(simTime()+": Pocz�tek niecierpliwo�ci zgl. nr: " + parent.getTenNr());
+        System.out.println(simTime()+": Poczatek niecierpliwosci zgl. nr: " + parent.getTenNr());
         double odstep = generator.normal(15.0, 1.0);
-        //parent.koniecNiecierpliwosci = new KoniecNiecierpliwosci(parent, odstep);
+        parent.koniecNiecierpliwosci = new KoniecNiecierpliwosciGeneric(parent, odstep);
 	}
 }

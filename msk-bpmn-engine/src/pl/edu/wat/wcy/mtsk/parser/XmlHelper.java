@@ -47,10 +47,11 @@ public class XmlHelper {
 		List<SmoInfiniteGeneric> wygenerowaneKolejkiNieskonczone = new ArrayList<>();
 		
 		for(Kolejka k : kolejka) {
+			System.out.println(k.getId());
 			wygenerowaneKolejkiNieskonczone.add(new SmoInfiniteGeneric(k.getId()));
 		}
 		
-		return null;
+		return wygenerowaneKolejkiNieskonczone;
 	}
 	
 }

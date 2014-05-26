@@ -1,8 +1,8 @@
 package pl.edu.wat.msk.elements;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import pl.edu.wat.msk.Notification;
 import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 
 /**
@@ -13,9 +13,9 @@ import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
  */
 public interface IHaveNext {
 
-	public ArrayList<IModelComponent> getNext();
+	public List<IModelComponent> getNext();
 	
-	public void setNext(ArrayList<IModelComponent> next);
+	public void setNext(List<IModelComponent> next);
 
 	public void addNext(IModelComponent next);
 	

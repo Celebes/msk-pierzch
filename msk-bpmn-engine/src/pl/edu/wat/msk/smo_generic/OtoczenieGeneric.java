@@ -1,20 +1,19 @@
 package pl.edu.wat.msk.smo_generic;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-import dissimlab.monitors.MonitoredVar;
-import dissimlab.simcore.SimControlException;
-import pl.edu.wat.msk.Notification;
 import pl.edu.wat.msk.distributions.AbstractDistribution;
 import pl.edu.wat.msk.distributions.Erlang;
+import pl.edu.wat.msk.distributions.Normal;
 import pl.edu.wat.msk.distributions.Uniform;
 import pl.edu.wat.msk.elements.HaveNext;
 import pl.edu.wat.msk.elements.IModelComponent;
 import pl.edu.wat.msk.elements.ValidationMessage;
 import pl.edu.wat.wcy.mtsk.xml_elements.Symulacja;
-import smo.Smo;
-import smo.Zglaszaj;
+import dissimlab.monitors.MonitoredVar;
+import dissimlab.simcore.SimControlException;
 
 /*
  * 
@@ -55,6 +54,16 @@ public class OtoczenieGeneric extends HaveNext {
 				double y = Double.parseDouble(parametry.get(1).getWartosc());
 
 				distribution = new Erlang(x, y);
+			} else if (type.equalsIgnoreCase("NORMAL")) {
+				if (parametry.size() != 2) {
+					throw new Exception(
+							"Niepoprawna ilosc parametrow dla rozkladu ERLANG!");
+				}
+
+				double x = Double.parseDouble(parametry.get(0).getWartosc());
+				double y = Double.parseDouble(parametry.get(1).getWartosc());
+
+				distribution = new Normal(x, y);
 			} else {
 				throw new Exception("Wprowadzono nieznany typ rozkladu!");
 			}
@@ -107,6 +116,11 @@ public class OtoczenieGeneric extends HaveNext {
 
 	public void setMVczasy_miedzy_zgl(MonitoredVar mVczasy_miedzy_zgl) {
 		MVczasy_miedzy_zgl = mVczasy_miedzy_zgl;
+	}
+
+	@Override
+	public void setNext(List<IModelComponent> next) {
+		super.setNext(next);
 	}
 
 }

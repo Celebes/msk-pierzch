@@ -1,5 +1,6 @@
 package pl.edu.wat.msk.elements;
 
+import java.util.List;
 import java.util.Vector;
 
 import dissimlab.monitors.MonitoredVar;
@@ -117,6 +118,12 @@ public class Source extends HavePrevNext {
 
 	@Override
 	public void putToNexts(ZgloszenieGeneric zgl) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setNext(List<IModelComponent> next) {
 		// TODO Auto-generated method stub
 		
 	}

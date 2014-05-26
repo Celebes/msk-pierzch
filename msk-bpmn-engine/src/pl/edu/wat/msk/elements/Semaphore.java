@@ -1,5 +1,6 @@
 package pl.edu.wat.msk.elements;
 
+import java.util.List;
 import java.util.Vector;
 
 import pl.edu.wat.msk.Notification;
@@ -34,6 +35,12 @@ public class Semaphore extends HavePrevNext implements IHaveNext {
 
 	@Override
 	public void putToNexts(ZgloszenieGeneric zgl) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setNext(List<IModelComponent> next) {
 		// TODO Auto-generated method stub
 		
 	}

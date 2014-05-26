@@ -2,6 +2,7 @@ package pl.edu.wat.msk.elements;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Vector;
 
 import dissimlab.monitors.MonitoredVar;
@@ -103,6 +104,12 @@ public class Queue extends HavePrevNext implements IHaveNext {
 
 	@Override
 	public void putToNexts(ZgloszenieGeneric zgl) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setNext(List<IModelComponent> next) {
 		// TODO Auto-generated method stub
 		
 	}

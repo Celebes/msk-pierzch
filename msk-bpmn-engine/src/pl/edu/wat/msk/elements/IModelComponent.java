@@ -16,7 +16,7 @@ public interface IModelComponent {
 
 	/** 
 	 *  Przetwarzanie
-	 */
+	 */	
 	public void processing(ZgloszenieGeneric zgl);
 	
 	/** 

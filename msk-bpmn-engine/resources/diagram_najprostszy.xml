@@ -2,9 +2,9 @@
 <symulacja>
 	<czynnosc>
 		<otoczenie id="generator1" dlugoscGenerowania="" maxIloscZgloszen="">
-			<rozklad id="rozklad1" rodzaj="erlang">
-				<param nazwa="a" wartosc="1" />
-				<param nazwa="b" wartosc="2.0" />
+			<rozklad id="rozklad1" rodzaj="normal">
+				<param nazwa="a" wartosc="5.0" />
+				<param nazwa="b" wartosc="1.0" />
 			</rozklad>
 		</otoczenie>
 

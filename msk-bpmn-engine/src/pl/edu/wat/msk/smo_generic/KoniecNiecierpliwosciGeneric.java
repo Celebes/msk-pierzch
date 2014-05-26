@@ -36,7 +36,12 @@ public class KoniecNiecierpliwosciGeneric extends BasicSimEvent<ZgloszenieGeneri
 
 	@Override
 	protected void stateChange() throws SimControlException {
-        /*System.out.println(simTime()+": Koniec niecierpliwo�ci zgl. nr: " + parent.getTenNr());
+		System.out.println(simTime()+": Koniec niecierpliwosci zgl. nr: " + parent.getTenNr());
+		
+		//if(parent.aktualnieObslugujacyKomponent.)
+		
+		
+        /*System.out.println(simTime()+": Koniec niecierpliwosci zgl. nr: " + parent.getTenNr());
         if (parent.smo.usunWskazany(parent)){
             System.out.println(simTime()+": Usuni�to z kolejki zgl. nr: " + parent.getTenNr());
             double lutrac = parent.getS
@@ -44,6 +49,6 @@ public class KoniecNiecierpliwosciGeneric extends BasicSimEvent<ZgloszenieGeneri
             parent.smo.MVutraconeZgl.setValue(lutrac++);
         }
         else
-            System.out.println(simTime()+": Problem z usuni�ciem z kolejki zgl. nr: " + parent.getTenNr());       	*/
+            System.out.println(simTime()+": Problem z usuni�ciem z kolejki zgl. nr: " + parent.getTenNr());*/
 	}
 }

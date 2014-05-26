@@ -26,7 +26,7 @@ public class ZglaszajGeneric extends BasicSimEvent<OtoczenieGeneric, Object> {
 	@Override
 	protected void stateChange() throws SimControlException {
 		parent = getSimObj();
-        ZgloszenieGeneric zgl = new ZgloszenieGeneric(simTime());
+        ZgloszenieGeneric zgl = new ZgloszenieGeneric(simTime(), null);
                 
         // wyslij utworzone zgloszenie do wszystkich nastepnikow parent
         parent.putToNexts(zgl);

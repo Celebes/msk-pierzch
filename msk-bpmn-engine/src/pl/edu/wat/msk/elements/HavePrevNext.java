@@ -1,8 +1,8 @@
 package pl.edu.wat.msk.elements;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import pl.edu.wat.msk.Notification;
 import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 
 /**
@@ -12,9 +12,9 @@ import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
  */
 public abstract class HavePrevNext extends ModelComponent implements IHaveNext, IHavePrev {
 
-	protected ArrayList<IModelComponent> nexts;
+	protected List<IModelComponent> nexts;
 	
-	protected ArrayList<IModelComponent> prevs;
+	protected List<IModelComponent> prevs;
 	
 	
 	public HavePrevNext() {
@@ -22,11 +22,11 @@ public abstract class HavePrevNext extends ModelComponent implements IHaveNext, 
 		prevs = new ArrayList<>();
 	}
 
-	public ArrayList<IModelComponent> getPrev() {
+	public List<IModelComponent> getPrev() {
 		return prevs;
 	}
 	
-	public void setPrev(ArrayList<IModelComponent> prev) {
+	public void setPrev(List<IModelComponent> prev) {
 		this.prevs = prev;
 	}
 
@@ -38,11 +38,11 @@ public abstract class HavePrevNext extends ModelComponent implements IHaveNext, 
 		this.prevs.remove(prev);
 	}
 
-	public ArrayList<IModelComponent> getNext() {
+	public List<IModelComponent> getNext() {
 		return nexts;
 	}
 	
-	public void setNext(ArrayList<IModelComponent> next) {
+	public void setNext(List<IModelComponent> next) {
 		nexts = next;
 	}
 
