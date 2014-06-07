@@ -16,7 +16,7 @@ public class AND extends LogicGateGeneric {
 
     
 	public AND(String id, String rodzaj) {
-		super(id, rodzaj);
+		super(id, rodzaj, null, null);
 	}
 	
 	   @Override

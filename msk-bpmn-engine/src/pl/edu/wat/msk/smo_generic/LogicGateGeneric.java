@@ -13,13 +13,12 @@ import pl.edu.wat.msk.utils.SelectDistributionUtil;
 import pl.edu.wat.wcy.mtsk.xml_elements.Param;
 
 public class LogicGateGeneric extends HavePrevNext {
-	private String id;
 	private String rodzaj;
 	private AbstractDistribution distribution;
 	private List<Param> params;
 
 	public LogicGateGeneric(String id, String rodzaj, String distributionName, List<Param> params) {
-		this.id = id;
+		setId( id );
 		this.rodzaj = rodzaj;
 		this.setDistribution(SelectDistributionUtil.getDistributionByName(distributionName, params));
 		//Być może nie będzie to poniżej używane
@@ -27,22 +26,14 @@ public class LogicGateGeneric extends HavePrevNext {
 	}
 
 	@Override
-	public void processing(ZgloszenieGeneric zgl) {
+	public void processing(ZgloszenieGeneric zgl, String id) {
 		Random generujPrzejscie = new Random();
 		List<IModelComponent> kolejneKomponenty = getNext();
 		int liczbaWyjscBramki = getNext().size();
 		int wylosowanePrzejscie = 1 + generujPrzejscie
 				.nextInt(liczbaWyjscBramki);
-		getNext().get(wylosowanePrzejscie).processing(zgl);
+		getNext().get(wylosowanePrzejscie).processing(zgl, getId());
 
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getRodzaj() {

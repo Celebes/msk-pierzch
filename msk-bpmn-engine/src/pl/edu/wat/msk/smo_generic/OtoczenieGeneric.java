@@ -24,7 +24,7 @@ public class OtoczenieGeneric extends HavePrevNext {
 	private MonitoredVar MVczasy_miedzy_zgl;
 
 	public OtoczenieGeneric(String id, String type, List<Param> parametry) throws SimControlException {
-		this.id = id;
+		setId( id );
 		distribution = SelectDistributionUtil.getDistributionByName(type, parametry);
 		zglaszaj = new ZglaszajGeneric(this, 0.0);
 		MVczasy_miedzy_zgl = new MonitoredVar();
