@@ -24,6 +24,7 @@ public class ZgloszenieGeneric extends BasicSimObj {
 
 	public ZgloszenieGeneric(double Czas, HavePrevNext aktualnieObslugujacyKomponent) throws SimControlException
     {
+		SimSystem.getInstance().incrementNotificationCount();
         czasOdniesienia = Czas;
         setTenNr();
         StartNiecierpliwosciGeneric stN = new StartNiecierpliwosciGeneric(this);
@@ -38,6 +39,10 @@ public class ZgloszenieGeneric extends BasicSimObj {
     public double getCzasOdniesienia()
     {
         return czasOdniesienia;
+    }
+    
+    public void destroy() {
+    	SimSystem.getInstance().decrementNotificationCount();
     }
 
 }
