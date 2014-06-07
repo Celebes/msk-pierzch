@@ -2,7 +2,7 @@ package pl.edu.wat.msk.otoczenie;
 
 import java.util.LinkedList;
 
-import pl.edu.wat.wcy.mtsk.xml_elements.Symulacja;
+import pl.edu.wat.wcy.mtsk.xml_elements.Kolejka;
 import smo.RozpocznijObslugeBis;
 import smo.ZakonczObslugeBis;
 import smo.Zgloszenie;
@@ -25,7 +25,7 @@ public class KolejkaGeneric extends BasicSimObj {
 	public MonitoredVar MVczasy_oczekiwania;
 	public MonitoredVar MVdlKolejki;
 
-	public KolejkaGeneric(Symulacja.Czynnosc.Kolejka kolejka) {
+	public KolejkaGeneric(Kolejka kolejka) {
 		this.isNieskonczona = kolejka.isNieskonczona();
 		this.maxDlKolejki = Integer.parseInt(kolejka.getMaxDlugoscKolejki());
 		this.kolejka = new LinkedList<Zgloszenie>();

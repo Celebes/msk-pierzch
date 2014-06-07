@@ -42,7 +42,7 @@
 		<polaczenie id="linia4" od="SMO2" do="bramka1" />
 
 		<polaczenie id="linia5" od="bramka1" do="SEM">
-			<warunek id="warunek1" wyrazenie="TRUE" />
+			<warunek id="warunek1" wartosc="TRUE" />
 		</polaczenie>
 
 		<polaczenie id="linia6" od="SEM" do="SMO3" />

@@ -1,6 +1,5 @@
 package pl.edu.wat.msk.smo_generic;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -12,7 +11,7 @@ import pl.edu.wat.msk.elements.HaveNext;
 import pl.edu.wat.msk.elements.IModelComponent;
 import pl.edu.wat.msk.elements.ValidationMessage;
 import pl.edu.wat.msk.events.ZglaszajGeneric;
-import pl.edu.wat.wcy.mtsk.xml_elements.Symulacja;
+import pl.edu.wat.wcy.mtsk.xml_elements.Param;
 import dissimlab.monitors.MonitoredVar;
 import dissimlab.simcore.SimControlException;
 
@@ -28,7 +27,7 @@ public class OtoczenieGeneric extends HaveNext {
 	private AbstractDistribution distribution;
 	private MonitoredVar MVczasy_miedzy_zgl;
 
-	public OtoczenieGeneric(String id, String type, List<Symulacja.Czynnosc.Otoczenie.Rozklad.Param> parametry) throws SimControlException {
+	public OtoczenieGeneric(String id, String type, List<Param> parametry) throws SimControlException {
 		this.id = id;
 		
 		try {
