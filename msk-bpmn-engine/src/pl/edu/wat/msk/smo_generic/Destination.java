@@ -1,6 +1,6 @@
 package pl.edu.wat.msk.smo_generic;
 
-import pl.edu.wat.msk.elements.HaveNext;
+import pl.edu.wat.msk.elements.HavePrevNext;
 import pl.edu.wat.msk.elements.IModelComponent;
 
 /**
@@ -11,7 +11,7 @@ import pl.edu.wat.msk.elements.IModelComponent;
  * @since 24.05.2014, 19:50
  *
  */
-public class Destination extends HaveNext {
+public class Destination extends HavePrevNext {
 
 	public Destination() {
 	}

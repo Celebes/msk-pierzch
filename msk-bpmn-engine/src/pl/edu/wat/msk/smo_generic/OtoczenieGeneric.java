@@ -1,15 +1,13 @@
 package pl.edu.wat.msk.smo_generic;
 
 import java.util.List;
-import java.util.Vector;
 
 import pl.edu.wat.msk.distributions.AbstractDistribution;
 import pl.edu.wat.msk.distributions.Erlang;
 import pl.edu.wat.msk.distributions.Normal;
 import pl.edu.wat.msk.distributions.Uniform;
-import pl.edu.wat.msk.elements.HaveNext;
+import pl.edu.wat.msk.elements.HavePrevNext;
 import pl.edu.wat.msk.elements.IModelComponent;
-import pl.edu.wat.msk.elements.ValidationMessage;
 import pl.edu.wat.msk.events.ZglaszajGeneric;
 import pl.edu.wat.wcy.mtsk.xml_elements.Param;
 import dissimlab.monitors.MonitoredVar;
@@ -20,7 +18,7 @@ import dissimlab.simcore.SimControlException;
  * Generator, ktory zawiera w sobie obiekt Zglaszaj generujacy kolejne zgloszenia
  */
 
-public class OtoczenieGeneric extends HaveNext {
+public class OtoczenieGeneric extends HavePrevNext {
 
 	private String id;
 	private ZglaszajGeneric zglaszaj;
