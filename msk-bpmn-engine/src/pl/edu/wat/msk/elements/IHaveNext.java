@@ -26,4 +26,5 @@ public interface IHaveNext {
 	 * @param notification
 	 */
 	public void putToNexts(ZgloszenieGeneric zgl);
+
 }

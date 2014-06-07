@@ -10,6 +10,7 @@ import pl.edu.wat.msk.elements.IHaveNext;
 import pl.edu.wat.msk.elements.IModelComponent;
 import pl.edu.wat.msk.smo_generic.OtoczenieGeneric;
 import pl.edu.wat.msk.smo_generic.SmoInfiniteGeneric;
+import pl.edu.wat.wcy.mtsk.xml_elements.Bramka;
 import pl.edu.wat.wcy.mtsk.xml_elements.Polaczenie;
 import pl.edu.wat.wcy.mtsk.xml_elements.Symulacja;
 import dissimlab.simcore.SimControlEvent;
@@ -95,6 +96,14 @@ public class SymulacjaRunner {
 				throw new SimControlException("ID podane w polaczeniu nie odnosi sie do zadnego istniejacego elementu w diagramie!");
 			} else {
 				objOd.addNext(objDo);
+				
+				// dodaj prawdopodobienstwo z polaczenia do bramki
+				if(objOd instanceof Bramka) {
+					if(p.getWarunek() != null) {
+						
+					}
+				}
+				
 				System.out.println("Pomyslnie utworzono polaczenie pomiedzy obiektami od ID: " + idOD + ", " + idDO);
 			}
 			
