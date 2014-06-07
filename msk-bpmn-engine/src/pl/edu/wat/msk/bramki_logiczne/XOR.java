@@ -47,7 +47,7 @@ public class XOR extends LogicGateGeneric {
 
     protected int getNextToProcess(int size, double rand) {
 	double wartoscZakresu = 1 / size;
-	double from = 0;
+	double from = 0.0;
 	double to = wartoscZakresu;
 	for (int i = 0; i < size; i++) {
 	    if (between(rand, from, to)) {
@@ -60,7 +60,7 @@ public class XOR extends LogicGateGeneric {
     }
 
     private boolean between(double value, double from, double to) {
-	if (value > from && value < to) {
+	if (value >= from && value < to) {
 	    return true;
 	}
 	return false;

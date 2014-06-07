@@ -36,7 +36,6 @@ public class OR extends XOR {
 		System.out
 			.println("BRAMKA OR: PRZEKAZANO PROCESSOWANIE NA GAŁĄŹ NR: "
 				+ variableToProcess);
-
 	    }
 	    selectedVariable.add(variableToProcess);
 	}
