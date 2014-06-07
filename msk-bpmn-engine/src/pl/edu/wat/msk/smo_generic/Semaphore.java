@@ -1,12 +1,10 @@
 package pl.edu.wat.msk.smo_generic;
 
-import java.util.ArrayList;
-
-import dissimlab.simcore.SimControlException;
 import pl.edu.wat.msk.distributions.IDistribution;
 import pl.edu.wat.msk.distributions.Normal;
 import pl.edu.wat.msk.elements.HavePrevNext;
 import pl.edu.wat.msk.events.WaitOnSemaphoreEvent;
+import dissimlab.simcore.SimControlException;
 
 /**
  * Semafor
