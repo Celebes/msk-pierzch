@@ -1,4 +1,0 @@
-Przyjęte konwencje przy tworzeniu XML'a
-
-Każdy obiekt generatora przyjmuje dwie wartości, niezależnie od wybranego rozkładu:
-	jeśli rozkład posiada tylko jeden parametr, drugi powinien zostać oznaczony jako "NIL" (nie null)

@@ -1,23 +1,27 @@
-package pl.edu.wat.msk.smo_events;
+package smo2;
 
-import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 import dissimlab.random.SimGenerator;
 import dissimlab.simcore.BasicSimEvent;
 import dissimlab.simcore.SimControlException;
 
-public class StartNiecierpliwosciGeneric extends BasicSimEvent<ZgloszenieGeneric, Object>
+/**
+ * 
+ * @author Dariusz Pierzchala
+
+ */
+public class StartNiecierpliwosci extends BasicSimEvent<Zgloszenie, Object>
 {
     private SimGenerator generator;
-    private ZgloszenieGeneric parent;
+    private Zgloszenie parent;
 
-    public StartNiecierpliwosciGeneric(ZgloszenieGeneric parent, double delay) throws SimControlException
+    public StartNiecierpliwosci(Zgloszenie parent, double delay) throws SimControlException
     {
     	super(parent, delay);
     	generator = new SimGenerator();
         this.parent = parent;
     }
 
-    public StartNiecierpliwosciGeneric(ZgloszenieGeneric parent) throws SimControlException
+    public StartNiecierpliwosci(Zgloszenie parent) throws SimControlException
     {
     	super(parent);
     	generator = new SimGenerator();
@@ -38,8 +42,8 @@ public class StartNiecierpliwosciGeneric extends BasicSimEvent<ZgloszenieGeneric
 
 	@Override
 	protected void stateChange() throws SimControlException {
-        System.out.println(simTime()+": Poczatek niecierpliwosci zgl. nr: " + parent.getTenNr());
+		//AA-test-AA System.out.println(simTime()+": Pocz¹tek niecierpliwoœci zgl. nr: " + parent.getTenNr());
         double odstep = generator.normal(15.0, 1.0);
-        //parent.koniecNiecierpliwosci = new KoniecNiecierpliwosciGeneric(parent, odstep);
+        parent.koniecNiecierpliwosci = new KoniecNiecierpliwosci(parent, odstep);
 	}
 }
