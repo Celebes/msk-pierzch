@@ -32,7 +32,7 @@ public class OR extends XOR {
 
 	    if (variableToProcess > 0
 		    && !selectedVariable.contains(variableToProcess)) {
-		nexts.get(variableToProcess).processing(zgl);
+		nexts.get(variableToProcess).processing(zgl, getId());
 		System.out
 			.println("BRAMKA OR: PRZEKAZANO PROCESSOWANIE NA GAŁĄŹ NR: "
 				+ variableToProcess);

@@ -33,7 +33,7 @@ public class XOR extends LogicGateGeneric {
 	double rand = getDistribution().getNextDouble();
 	int variableToProcess = getNextToProcess(size, rand);
 	if (variableToProcess > 0) {
-	    nexts.get(variableToProcess).processing(zgl);
+	    nexts.get(variableToProcess).processing(zgl, getId());
 	    System.out
 		    .println("BRAMKA XOR: PRZEKAZANO PROCESSOWANIE NA GAŁĄŹ NR: "
 			    + variableToProcess);
@@ -42,10 +42,6 @@ public class XOR extends LogicGateGeneric {
 	}
     }
 
-    @Override
-    public void processing(ZgloszenieGeneric zgl) {
-
-    };
 
     /* *****************METODY PRYWATNE *********************** */
 
