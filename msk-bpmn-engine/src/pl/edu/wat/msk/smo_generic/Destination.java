@@ -1,5 +1,6 @@
 package pl.edu.wat.msk.smo_generic;
 
+import dissimlab.simcore.SimManager;
 import pl.edu.wat.msk.elements.HavePrevNext;
 import pl.edu.wat.msk.elements.IModelComponent;
 
@@ -12,8 +13,10 @@ import pl.edu.wat.msk.elements.IModelComponent;
  *
  */
 public class Destination extends HavePrevNext {
-
+	private SimSystem simSystem;
+	
 	public Destination() {
+		simSystem = SimSystem.getInstance();
 	}
 	
 	/**
@@ -26,18 +29,14 @@ public class Destination extends HavePrevNext {
 	
 	@Override
 	public void processing(ZgloszenieGeneric zgl, String id) {
-		if(nexts.isEmpty()) { // zwykłe destination
-			//TODO
-		}
-		else { //destination wewnątrz aktywności złożonej
-			//TODO
-		}
+		zgl.destroy();
+		
+		double serviceTime = SimManager.getInstance().simTime() - zgl.getCzasOdniesienia();
+		simSystem.mv_serviceTime.setValue(serviceTime);
 	}
 
 	@Override
 	public void putToNexts(ZgloszenieGeneric zgl) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

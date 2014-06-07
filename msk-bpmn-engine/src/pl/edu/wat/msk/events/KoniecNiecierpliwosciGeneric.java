@@ -39,6 +39,8 @@ public class KoniecNiecierpliwosciGeneric extends BasicSimEvent<ZgloszenieGeneri
 	protected void stateChange() throws SimControlException {
 		System.out.println(simTime()+": Koniec niecierpliwosci zgl. nr: " + parent.getTenNr());
 		
+		
+		getSimObj().destroy(); // musi być wywołane, ma wpływ na statystyki w systemie
 		//if(parent.aktualnieObslugujacyKomponent.)
 		
 		

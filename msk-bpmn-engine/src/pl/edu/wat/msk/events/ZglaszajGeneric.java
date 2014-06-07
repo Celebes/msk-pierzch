@@ -29,7 +29,7 @@ public class ZglaszajGeneric extends BasicSimEvent<OtoczenieGeneric, Object> {
 	protected void stateChange() throws SimControlException {
 		parent = getSimObj();
         ZgloszenieGeneric zgl = new ZgloszenieGeneric(simTime(), null);
-                
+        
         // wyslij utworzone zgloszenie do wszystkich nastepnikow parent
         parent.putToNexts(zgl);
         System.out.println(simDate(SimDateField.HOUR24)+" - "+simDate(SimDateField.MINUTE)+" - "+simDate(SimDateField.SECOND)+" - "+simDate(SimDateField.MILLISECOND)+": Otoczenie[" + this.parent.getId() + "] : Dodano nowe zgl. nr: " + zgl.getTenNr());
