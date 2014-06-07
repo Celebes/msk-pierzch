@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<symulacja>
+	<czynnosc>
+		<otoczenie id="generator1" dlugoscGenerowania="" maxIloscZgloszen="">
+			<rozklad id="rozklad1" rodzaj="normal">
+				<param nazwa="a" wartosc="5.0" />
+				<param nazwa="b" wartosc="1.0" />
+			</rozklad>
+		</otoczenie>
+
+		<kolejka id="SMO1" nieskonczona="true" maxDlugoscKolejki="niesk">
+			<gniazdo id="G1" />
+			<koniec id="niecierpliwosc1" />
+		</kolejka>
+		
+		<kolejka id="SMO2" nieskonczona="true" maxDlugoscKolejki="niesk">
+			<gniazdo id="G2" />
+			<koniec id="niecierpliwosc2" />
+		</kolejka>
+		
+		<kolejka id="SMO3" nieskonczona="true" maxDlugoscKolejki="niesk">
+			<gniazdo id="G3" />
+			<koniec id="niecierpliwosc3" />
+		</kolejka>
+
+		<polaczenie id="linia1" od="generator1" do="SMO1" />
+		<polaczenie id="linia2" od="SMO1" do="SMO2" />
+		<polaczenie id="linia3" od="SMO1" do="SMO3" />
+
+	</czynnosc>
+</symulacja>
