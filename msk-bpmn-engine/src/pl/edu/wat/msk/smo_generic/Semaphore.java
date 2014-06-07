@@ -21,8 +21,8 @@ public class Semaphore extends HavePrevNext {
 	}
 	
 	@Override
-	public void processing(ZgloszenieGeneric zgl) {
+	public void processing(ZgloszenieGeneric zgl, String id) {
 		// TODO Auto-generated method stub
-		super.processing(zgl);
+		super.processing(zgl, getId());
 	}
 }

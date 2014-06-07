@@ -24,8 +24,8 @@ public class CompositActivity extends HavePrevNext {
 	}
 	
 	@Override
-	public void processing(ZgloszenieGeneric zgl) {
-		firstComponent.processing(zgl);
+	public void processing(ZgloszenieGeneric zgl, String id) {
+		firstComponent.processing(zgl, this.getId());
 	}
 
 	public HavePrevNext getFirstComponent() {
