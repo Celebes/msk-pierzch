@@ -3,7 +3,7 @@ package pl.edu.wat.msk.bramki_logiczne;
 import java.util.ArrayList;
 import java.util.List;
 
-import pl.edu.wat.wcy.mtsk.xml_elements.Symulacja;
+import pl.edu.wat.wcy.mtsk.xml_elements.Bramka;
 import dissimlab.simcore.BasicSimObj;
 
 public class BramkaLogiczna extends BasicSimObj {
@@ -13,7 +13,7 @@ public class BramkaLogiczna extends BasicSimObj {
 	
 	private List<BasicSimObj> nastepniki;
 	
-	public BramkaLogiczna(Symulacja.Czynnosc.Bramka bramkaDaneXML) {
+	public BramkaLogiczna(Bramka bramkaDaneXML) {
 		this.id = bramkaDaneXML.getId();
 		this.rodzaj = bramkaDaneXML.getRodzaj();
 		
