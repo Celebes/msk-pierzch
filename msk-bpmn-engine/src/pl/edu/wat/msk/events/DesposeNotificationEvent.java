@@ -1,6 +1,6 @@
 package pl.edu.wat.msk.events;
 
-import pl.edu.wat.msk.elements.Destination;
+import pl.edu.wat.msk.smo_generic.Destination;
 import dissimlab.simcore.BasicSimEvent;
 import dissimlab.simcore.SimControlException;
 

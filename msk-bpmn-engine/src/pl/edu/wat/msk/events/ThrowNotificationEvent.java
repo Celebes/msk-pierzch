@@ -5,7 +5,7 @@ import dissimlab.simcore.BasicSimEvent;
 import dissimlab.simcore.SimControlException;
 import dissimlab.simcore.SimParameters.SimDateField;
 import pl.edu.wat.msk.Notification;
-import pl.edu.wat.msk.elements.Source;;
+import pl.edu.wat.msk.smo_generic.Source;
 
 /**
  * Zdarzenie generowania zgłoszeń.

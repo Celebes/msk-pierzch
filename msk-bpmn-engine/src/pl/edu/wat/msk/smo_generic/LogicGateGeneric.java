@@ -5,11 +5,9 @@ package pl.edu.wat.msk.smo_generic;
 
 import java.util.List;
 import java.util.Random;
-import java.util.Vector;
 
 import pl.edu.wat.msk.elements.HavePrevNext;
 import pl.edu.wat.msk.elements.IModelComponent;
-import pl.edu.wat.msk.elements.ValidationMessage;
 
 public class LogicGateGeneric extends HavePrevNext {
 	private String id;
@@ -45,12 +43,6 @@ public class LogicGateGeneric extends HavePrevNext {
 
 	public void setRodzaj(String rodzaj) {
 		this.rodzaj = rodzaj;
-	}
-
-	@Override
-	public Vector<ValidationMessage> validate() {
-	    // TODO Auto-generated method stub
-	    return null;
 	}
 
 }

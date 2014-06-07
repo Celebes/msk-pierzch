@@ -1,9 +1,7 @@
-package pl.edu.wat.msk.elements;
+package pl.edu.wat.msk.smo_generic;
 
-import java.util.Vector;
-
-import pl.edu.wat.msk.Notification;
-import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
+import pl.edu.wat.msk.elements.HaveNext;
+import pl.edu.wat.msk.elements.IModelComponent;
 
 /**
  * Cel dla zgłoszeń obsługiwanych przez system.
@@ -24,12 +22,6 @@ public class Destination extends HaveNext {
 	 */
 	public Destination(IModelComponent next) {
 		nexts.add(next);
-	}
-	
-	@Override
-	public Vector<ValidationMessage> validate() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 	@Override
