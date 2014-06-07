@@ -22,7 +22,8 @@ public class LogicGateGeneric extends HavePrevNext {
 		this.id = id;
 		this.rodzaj = rodzaj;
 		this.setDistribution(SelectDistributionUtil.getDistributionByName(distributionName, params));
-		//Być może nie będzie to poniżej używane
+		
+		//Być może nie będzie to używane
 		this.params = params;
 	}
 
