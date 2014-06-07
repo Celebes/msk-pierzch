@@ -1,9 +1,11 @@
-package pl.edu.wat.msk.elements;
+package pl.edu.wat.msk.smo_generic;
 
 import java.util.Vector;
 
 import pl.edu.wat.msk.Notification;
-import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
+import pl.edu.wat.msk.elements.HaveNext;
+import pl.edu.wat.msk.elements.IModelComponent;
+import pl.edu.wat.msk.elements.ValidationMessage;
 
 /**
  * Cel dla zgłoszeń obsługiwanych przez system.

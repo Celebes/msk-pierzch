@@ -1,4 +1,4 @@
-package pl.edu.wat.msk.elements;
+package pl.edu.wat.msk.smo_generic;
 
 import java.util.List;
 import java.util.Vector;
@@ -7,8 +7,10 @@ import dissimlab.monitors.MonitoredVar;
 import dissimlab.simcore.SimControlException;
 import pl.edu.wat.msk.Notification;
 import pl.edu.wat.msk.distributions.IDistribution;
+import pl.edu.wat.msk.elements.HavePrevNext;
+import pl.edu.wat.msk.elements.IModelComponent;
+import pl.edu.wat.msk.elements.ValidationMessage;
 import pl.edu.wat.msk.events.ThrowNotificationEvent;
-import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 
 /**
  * źródło generujące zgłoszenia dla systemu.
