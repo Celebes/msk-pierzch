@@ -3,17 +3,15 @@ package pl.edu.wat.msk.smo_generic;
 import java.util.List;
 
 import pl.edu.wat.msk.distributions.AbstractDistribution;
-import pl.edu.wat.msk.distributions.Erlang;
-import pl.edu.wat.msk.distributions.Normal;
-import pl.edu.wat.msk.distributions.Uniform;
 import pl.edu.wat.msk.elements.HavePrevNext;
 import pl.edu.wat.msk.elements.IModelComponent;
 import pl.edu.wat.msk.events.ZglaszajGeneric;
+import pl.edu.wat.msk.utils.SelectDistributionUtil;
 import pl.edu.wat.wcy.mtsk.xml_elements.Param;
 import dissimlab.monitors.MonitoredVar;
 import dissimlab.simcore.SimControlException;
 
-/*
+/**
  * 
  * Generator, ktory zawiera w sobie obiekt Zglaszaj generujacy kolejne zgloszenia
  */
@@ -27,49 +25,7 @@ public class OtoczenieGeneric extends HavePrevNext {
 
 	public OtoczenieGeneric(String id, String type, List<Param> parametry) throws SimControlException {
 		this.id = id;
-		
-		try {
-
-			if (type.equalsIgnoreCase("UNIFORM")) {
-
-				if (parametry.size() != 2) {
-					throw new Exception(
-							"Niepoprawna ilosc parametrow dla rozkladu UNIFORM!");
-				}
-
-				double x = Double.parseDouble(parametry.get(0).getWartosc());
-				double y = Double.parseDouble(parametry.get(1).getWartosc());
-
-				distribution = new Uniform(x, y);
-			} else if (type.equalsIgnoreCase("ERLANG")) {
-
-				if (parametry.size() != 2) {
-					throw new Exception(
-							"Niepoprawna ilosc parametrow dla rozkladu ERLANG!");
-				}
-
-				int x = Integer.parseInt(parametry.get(0).getWartosc());
-				double y = Double.parseDouble(parametry.get(1).getWartosc());
-
-				distribution = new Erlang(x, y);
-			} else if (type.equalsIgnoreCase("NORMAL")) {
-				if (parametry.size() != 2) {
-					throw new Exception(
-							"Niepoprawna ilosc parametrow dla rozkladu ERLANG!");
-				}
-
-				double x = Double.parseDouble(parametry.get(0).getWartosc());
-				double y = Double.parseDouble(parametry.get(1).getWartosc());
-
-				distribution = new Normal(x, y);
-			} else {
-				throw new Exception("Wprowadzono nieznany typ rozkladu!");
-			}
-
-		} catch (Exception e) {
-			System.err.println("WPROWADZONO ZŁE DANE!");
-		}
-		
+		distribution = SelectDistributionUtil.getDistributionByName(type, parametry);
 		zglaszaj = new ZglaszajGeneric(this, 0.0);
 		MVczasy_miedzy_zgl = new MonitoredVar();
 	}
@@ -77,12 +33,6 @@ public class OtoczenieGeneric extends HavePrevNext {
 	public double getNextDouble() {
 		return distribution.getNextDouble();
 	}
-
-/*	@Override
-	public Vector<ValidationMessage> validate() {
-		// TODO Auto-generated method stub
-		return null;
-	}*/
 
 	public String getId() {
 		return id;
