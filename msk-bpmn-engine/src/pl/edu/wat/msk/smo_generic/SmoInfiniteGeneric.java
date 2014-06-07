@@ -1,23 +1,14 @@
 package pl.edu.wat.msk.smo_generic;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Vector;
 
-import pl.edu.wat.msk.Notification;
 import pl.edu.wat.msk.elements.HavePrevNext;
 import pl.edu.wat.msk.elements.IModelComponent;
-import pl.edu.wat.msk.elements.ValidationMessage;
 import pl.edu.wat.msk.events.RozpocznijObslugeInfiniteGeneric;
 import pl.edu.wat.msk.events.ZakonczObslugeInfiniteGeneric;
-import smo.RozpocznijObslugeBis;
-import smo.ZakonczObsluge;
-import smo.ZakonczObslugeBis;
-import smo.Zgloszenie;
 import dissimlab.monitors.MonitoredVar;
 import dissimlab.simcore.SimControlException;
-import dissimlab.simcore.SimEventSemaphore;
 
 public class SmoInfiniteGeneric extends HavePrevNext {
 	

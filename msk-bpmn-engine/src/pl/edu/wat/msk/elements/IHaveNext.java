@@ -1,6 +1,5 @@
 package pl.edu.wat.msk.elements;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
