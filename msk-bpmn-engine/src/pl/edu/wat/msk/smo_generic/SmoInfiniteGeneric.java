@@ -9,6 +9,8 @@ import pl.edu.wat.msk.Notification;
 import pl.edu.wat.msk.elements.HavePrevNext;
 import pl.edu.wat.msk.elements.IModelComponent;
 import pl.edu.wat.msk.elements.ValidationMessage;
+import pl.edu.wat.msk.events.RozpocznijObslugeInfiniteGeneric;
+import pl.edu.wat.msk.events.ZakonczObslugeInfiniteGeneric;
 import smo.RozpocznijObslugeBis;
 import smo.ZakonczObsluge;
 import smo.ZakonczObslugeBis;

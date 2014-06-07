@@ -1,5 +1,7 @@
-package pl.edu.wat.msk.smo_generic;
+package pl.edu.wat.msk.events;
 
+import pl.edu.wat.msk.smo_generic.SmoInfiniteGeneric;
+import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 import smo.Smo;
 import smo.ZakonczObsluge;
 import smo.Zgloszenie;

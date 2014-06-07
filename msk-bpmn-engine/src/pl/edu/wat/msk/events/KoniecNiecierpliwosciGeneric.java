@@ -1,5 +1,6 @@
-package pl.edu.wat.msk.smo_generic;
+package pl.edu.wat.msk.events;
 
+import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 import dissimlab.random.SimGenerator;
 import dissimlab.simcore.BasicSimEvent;
 import dissimlab.simcore.SimControlException;
