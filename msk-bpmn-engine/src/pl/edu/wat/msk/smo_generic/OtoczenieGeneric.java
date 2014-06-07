@@ -17,14 +17,12 @@ import dissimlab.simcore.SimControlException;
  */
 
 public class OtoczenieGeneric extends HavePrevNext {
-
-	private String id;
 	private ZglaszajGeneric zglaszaj;
 	private AbstractDistribution distribution;
 	private MonitoredVar MVczasy_miedzy_zgl;
 
 	public OtoczenieGeneric(String id, String type, List<Param> parametry) throws SimControlException {
-		setId( id );
+		this.id = id;
 		distribution = SelectDistributionUtil.getDistributionByName(type, parametry);
 		zglaszaj = new ZglaszajGeneric(this, 0.0);
 		MVczasy_miedzy_zgl = new MonitoredVar();
@@ -32,14 +30,6 @@ public class OtoczenieGeneric extends HavePrevNext {
 
 	public double getNextDouble() {
 		return distribution.getNextDouble();
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public ZglaszajGeneric getZglaszaj() {

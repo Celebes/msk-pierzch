@@ -1,106 +1,104 @@
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
   <xs:element name="symulacja">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="czynnosc">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="otoczenie" maxOccurs="unbounded" minOccurs="0">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element name="rozklad">
-                      <xs:complexType>
-                        <xs:sequence>
-                          <xs:element name="param" maxOccurs="unbounded" minOccurs="0">
-                            <xs:complexType>
-                              <xs:simpleContent>
-                                <xs:extension base="xs:string">
-                                  <xs:attribute type="xs:string" name="nazwa" use="optional"/>
-                                  <xs:attribute type="xs:string" name="wartosc" use="optional"/>
-                                </xs:extension>
-                              </xs:simpleContent>
-                            </xs:complexType>
-                          </xs:element>
-                        </xs:sequence>
-                        <xs:attribute type="xs:string" name="id" use="optional"/>
-                        <xs:attribute type="xs:string" name="rodzaj" use="optional"/>
-                      </xs:complexType>
-                    </xs:element>
-                  </xs:sequence>
-                  <xs:attribute type="xs:string" name="id" use="optional"/>
-                  <xs:attribute type="xs:string" name="dlugoscGenerowania" use="optional"/>
-                  <xs:attribute type="xs:string" name="maxIloscZgloszen" use="optional"/>
-                </xs:complexType>
-              </xs:element>
-              <xs:element name="kolejka" maxOccurs="unbounded" minOccurs="0">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element name="gniazdo">
-                      <xs:complexType>
-                        <xs:simpleContent>
-                          <xs:extension base="xs:string">
-                            <xs:attribute type="xs:string" name="id" use="optional"/>
-                          </xs:extension>
-                        </xs:simpleContent>
-                      </xs:complexType>
-                    </xs:element>
-                    <xs:element name="koniec">
-                      <xs:complexType>
-                        <xs:simpleContent>
-                          <xs:extension base="xs:string">
-                            <xs:attribute type="xs:string" name="id" use="optional"/>
-                          </xs:extension>
-                        </xs:simpleContent>
-                      </xs:complexType>
-                    </xs:element>
-                  </xs:sequence>
-                  <xs:attribute type="xs:string" name="id" use="optional"/>
-                  <xs:attribute type="xs:string" name="nieskonczona" use="optional"/>
-                  <xs:attribute type="xs:string" name="maxDlugoscKolejki" use="optional"/>
-                </xs:complexType>
-              </xs:element>
-              <xs:element name="bramka">
-                <xs:complexType>
-                  <xs:simpleContent>
-                    <xs:extension base="xs:string">
-                      <xs:attribute type="xs:string" name="id"/>
-                      <xs:attribute type="xs:string" name="rodzaj"/>
-                    </xs:extension>
-                  </xs:simpleContent>
-                </xs:complexType>
-              </xs:element>
-              <xs:element name="semafor">
-                <xs:complexType>
-                  <xs:simpleContent>
-                    <xs:extension base="xs:string">
-                      <xs:attribute type="xs:string" name="id"/>
-                    </xs:extension>
-                  </xs:simpleContent>
-                </xs:complexType>
-              </xs:element>
-              <xs:element name="polaczenie" maxOccurs="unbounded" minOccurs="0">
-                <xs:complexType mixed="true">
-                  <xs:sequence>
-                    <xs:element name="warunek" minOccurs="0">
-                      <xs:complexType>
-                        <xs:simpleContent>
-                          <xs:extension base="xs:string">
-                            <xs:attribute type="xs:string" name="id"/>
-                            <xs:attribute type="xs:string" name="wartosc"/>
-                          </xs:extension>
-                        </xs:simpleContent>
-                      </xs:complexType>
-                    </xs:element>
-                  </xs:sequence>
-                  <xs:attribute type="xs:string" name="id" use="optional"/>
-                  <xs:attribute type="xs:string" name="od" use="optional"/>
-                  <xs:attribute type="xs:string" name="do" use="optional"/>
-                </xs:complexType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
+        <xs:element maxOccurs="unbounded" ref="czynnosc"/>
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="czynnosc">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="otoczenie"/>
+        <xs:element maxOccurs="unbounded" ref="kolejka"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="bramka"/>
+          <xs:element ref="semafor"/>
+          <xs:element maxOccurs="unbounded" ref="pod-czynnosc"/>
+          <xs:element maxOccurs="unbounded" ref="polaczenie"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="otoczenie">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="rozklad"/>
+      </xs:sequence>
+      <xs:attribute name="dlugoscGenerowania" use="required"/>
+      <xs:attribute name="id" use="required" type="xs:NCName"/>
+      <xs:attribute name="maxIloscZgloszen" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="rozklad">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="param"/>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="xs:NCName"/>
+      <xs:attribute name="rodzaj" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="param">
+    <xs:complexType>
+      <xs:attribute name="nazwa" use="required" type="xs:NCName"/>
+      <xs:attribute name="wartosc" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="kolejka">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="gniazdo"/>
+        <xs:element ref="koniec"/>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="xs:NCName"/>
+      <xs:attribute name="maxDlugoscKolejki" use="required" type="xs:NCName"/>
+      <xs:attribute name="nieskonczona" use="required" type="xs:boolean"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="gniazdo">
+    <xs:complexType>
+      <xs:attribute name="id" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="koniec">
+    <xs:complexType>
+      <xs:attribute name="id" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="bramka">
+    <xs:complexType>
+      <xs:attribute name="id" use="required" type="xs:NCName"/>
+      <xs:attribute name="rodzaj" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="semafor">
+    <xs:complexType>
+      <xs:attribute name="id" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pod-czynnosc">
+    <xs:complexType>
+      <xs:attribute name="id" use="required" type="xs:NCName"/>
+      <xs:attribute name="ref" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="polaczenie">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="warunek"/>
+      </xs:sequence>
+      <xs:attribute name="do" use="required" type="xs:NCName"/>
+      <xs:attribute name="id" use="required" type="xs:NCName"/>
+      <xs:attribute name="od" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="warunek">
+    <xs:complexType>
+      <xs:attribute name="id" use="required" type="xs:NCName"/>
+      <xs:attribute name="wartosc" use="required" type="xs:NCName"/>
     </xs:complexType>
   </xs:element>
 </xs:schema>

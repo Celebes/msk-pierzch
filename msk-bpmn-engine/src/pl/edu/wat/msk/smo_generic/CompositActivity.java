@@ -15,7 +15,8 @@ public class CompositActivity extends HavePrevNext {
 	private HavePrevNext lastComponent;
 	private List<HavePrevNext> subComponents;
 	
-	public CompositActivity(HavePrevNext first, HavePrevNext last, List<HavePrevNext> all) {
+	public CompositActivity(String id, HavePrevNext first, HavePrevNext last, List<HavePrevNext> all) {
+		this.id = id;
 		this.firstComponent = first;
 		this.lastComponent = last;
 		subComponents = all;

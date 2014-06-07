@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <symulacja>
-	<czynnosc>
+	<czynnosc id="czynnosc1">
 		<otoczenie id="generator1" dlugoscGenerowania="" maxIloscZgloszen="">
 			<rozklad id="rozklad1" rodzaj="normal">
 				<param nazwa="a" wartosc="5.0" />
@@ -18,14 +18,18 @@
 			<koniec id="niecierpliwosc2" />
 		</kolejka>
 		
-		<kolejka id="SMO3" nieskonczona="true" maxDlugoscKolejki="niesk">
-			<gniazdo id="G3" />
-			<koniec id="niecierpliwosc3" />
-		</kolejka>
-
+		<pod-czynnosc id="podczynnosc1" ref="czynnosc2"/>
+	
 		<polaczenie id="linia1" od="generator1" do="SMO1" />
 		<polaczenie id="linia2" od="SMO1" do="SMO2" />
-		<polaczenie id="linia3" od="SMO1" do="SMO3" />
+		<polaczenie id="linia3" od="SMO2" do="podczynnosc1" />
 
+	</czynnosc>
+	
+	<czynnosc id="czynnosc2">
+		<kolejka id="SMO3" nieskonczona="true" maxDlugoscKolejki="niesk">
+				<gniazdo id="G3" />
+				<koniec id="niecierpliwosc3" />
+		</kolejka>
 	</czynnosc>
 </symulacja>

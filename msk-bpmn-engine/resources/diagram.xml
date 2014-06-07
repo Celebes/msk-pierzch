@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <symulacja>
-	<czynnosc>
+	<czynnosc id="czynnosc1">
 		<otoczenie id="generator1" dlugoscGenerowania=""
 			maxIloscZgloszen="">
 			<rozklad id="rozklad1" rodzaj="erlang">
@@ -21,19 +21,12 @@
 			<koniec id="niecierpliwosc1" />
 		</kolejka>
 
-		<kolejka id="SMO2" nieskonczona="false" maxDlugoscKolejki="N">
-			<gniazdo id="G2" />
-			<koniec id="niecierpliwosc2" />
-		</kolejka>
-
-		<kolejka id="SMO3" nieskonczona="false" maxDlugoscKolejki="M">
-			<gniazdo id="G3" />
-			<koniec id="niecierpliwosc3" />
-		</kolejka>
-
 		<bramka id="bramka1" rodzaj="OR" />
 
 		<semafor id="SEM" />
+		
+		<pod-czynnosc id="podczynnosc1" ref="czynnosc2"/>
+		<pod-czynnosc id="podczynnosc2" ref="czynnosc3"/>
 
 		<polaczenie id="linia1" od="generator1" do="SMO1" />
 		<polaczenie id="linia2" od="generator2" do="SMO2" />
@@ -47,5 +40,19 @@
 
 		<polaczenie id="linia6" od="SEM" do="SMO3" />
 
+	</czynnosc>
+	
+	<czynnosc id="czynnosc2"> 
+		<kolejka id="SMO2" nieskonczona="false" maxDlugoscKolejki="N">
+			<gniazdo id="G2" />
+			<koniec id="niecierpliwosc2" />
+		</kolejka>
+	</czynnosc>
+	
+	<czynnosc id="czynnosc3"> 
+		<kolejka id="SMO3" nieskonczona="false" maxDlugoscKolejki="M">
+			<gniazdo id="G3" />
+			<koniec id="niecierpliwosc3" />
+		</kolejka>
 	</czynnosc>
 </symulacja>

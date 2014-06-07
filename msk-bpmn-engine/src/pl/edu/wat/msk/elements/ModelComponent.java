@@ -26,7 +26,7 @@ public abstract class ModelComponent extends BasicSimObj implements
      * Opis komponentu określony przez użytkownika.
      */
     private String description;
-    private String id;
+    protected String id;
 
     protected LinkedList<ZgloszenieGeneric> kolejka;
     public MonitoredVar MVdlKolejki;

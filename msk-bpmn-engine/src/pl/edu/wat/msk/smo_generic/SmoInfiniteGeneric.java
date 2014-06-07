@@ -21,7 +21,6 @@ import dissimlab.simcore.SimEventSemaphore;
 
 public class SmoInfiniteGeneric extends HavePrevNext {
 	
-	private String id;
 	private boolean wolne = true;
 	public RozpocznijObslugeInfiniteGeneric rozpocznijObsluge;
     public ZakonczObslugeInfiniteGeneric zakonczObsluge;
@@ -122,14 +121,6 @@ public class SmoInfiniteGeneric extends HavePrevNext {
 
 	public void setMVutraconeZgl(MonitoredVar mVutraconeZgl) {
 		MVutraconeZgl = mVutraconeZgl;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	@Override

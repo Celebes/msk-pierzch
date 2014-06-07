@@ -14,6 +14,7 @@ import pl.edu.wat.msk.smo_generic.OtoczenieGeneric;
 import pl.edu.wat.msk.smo_generic.SmoInfiniteGeneric;
 import pl.edu.wat.wcy.mtsk.xml_elements.Kolejka;
 import pl.edu.wat.wcy.mtsk.xml_elements.Otoczenie;
+import pl.edu.wat.wcy.mtsk.xml_elements.PodCzynnosc;
 import pl.edu.wat.wcy.mtsk.xml_elements.Polaczenie;
 import pl.edu.wat.wcy.mtsk.xml_elements.Rozklad;
 import pl.edu.wat.wcy.mtsk.xml_elements.Symulacja;
@@ -59,6 +60,16 @@ public class XmlHelper {
 	public static List<Polaczenie> generujPolaczenia(List<Polaczenie> polaczenie) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public static List<String> generujIdPodczynnosci(List<PodCzynnosc> list) {
+		List<String> idPodczynnosci = new ArrayList<>();
+		
+		for(PodCzynnosc pc : list) {
+			idPodczynnosci.add(pc.getId());
+		}
+		
+		return idPodczynnosci;
 	}
 	
 }

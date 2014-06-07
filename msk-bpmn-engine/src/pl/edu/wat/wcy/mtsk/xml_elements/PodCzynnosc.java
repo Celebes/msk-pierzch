@@ -8,12 +8,9 @@
 
 package pl.edu.wat.wcy.mtsk.xml_elements;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
@@ -30,11 +27,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{}param" maxOccurs="unbounded"/>
- *       &lt;/sequence>
  *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
- *       &lt;attribute name="rodzaj" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
+ *       &lt;attribute name="ref" use="required" type="{http://www.w3.org/2001/XMLSchema}NCName" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -43,51 +37,18 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "param"
-})
-@XmlRootElement(name = "rozklad")
-public class Rozklad {
+@XmlType(name = "")
+@XmlRootElement(name = "pod-czynnosc")
+public class PodCzynnosc {
 
-    @XmlElement(required = true)
-    protected List<Param> param;
     @XmlAttribute(name = "id", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlSchemaType(name = "NCName")
     protected String id;
-    @XmlAttribute(name = "rodzaj", required = true)
+    @XmlAttribute(name = "ref", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlSchemaType(name = "NCName")
-    protected String rodzaj;
-
-    /**
-     * Gets the value of the param property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the param property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getParam().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Param }
-     * 
-     * 
-     */
-    public List<Param> getParam() {
-        if (param == null) {
-            param = new ArrayList<Param>();
-        }
-        return this.param;
-    }
+    protected String ref;
 
     /**
      * Gets the value of the id property.
@@ -114,27 +75,27 @@ public class Rozklad {
     }
 
     /**
-     * Gets the value of the rodzaj property.
+     * Gets the value of the ref property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getRodzaj() {
-        return rodzaj;
+    public String getRef() {
+        return ref;
     }
 
     /**
-     * Sets the value of the rodzaj property.
+     * Sets the value of the ref property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setRodzaj(String value) {
-        this.rodzaj = value;
+    public void setRef(String value) {
+        this.ref = value;
     }
 
 }
