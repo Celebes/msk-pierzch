@@ -77,7 +77,7 @@ public class Source extends HavePrevNext {
 	public void handOver(Notification notification) {
 	}
 	
-	@Override
+/*	@Override
 	public Vector<ValidationMessage> validate() {
 		Vector<ValidationMessage> msgs = new Vector<>();
 		
@@ -92,7 +92,7 @@ public class Source extends HavePrevNext {
 		}
 		
 		return msgs;
-	}
+	}*/
 
 	public IDistribution getBreaksDistribution() {
 		return breaksDistribution;

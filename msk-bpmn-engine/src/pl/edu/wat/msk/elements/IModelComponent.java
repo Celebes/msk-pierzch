@@ -23,6 +23,6 @@ public interface IModelComponent {
 	 *  Metoda walidacji komponentu.
 	 *  Zwraca kolekcję ewentualnych problemów spotykanych przy walidacji.
 	 */
-	public Vector<ValidationMessage> validate();
+	/*public Vector<ValidationMessage> validate();*/
 
 }

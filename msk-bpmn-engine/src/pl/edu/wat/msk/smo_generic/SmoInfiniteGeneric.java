@@ -54,11 +54,11 @@ public class SmoInfiniteGeneric extends HavePrevNext {
         }
 	}
 
-	@Override
+/*	@Override
 	public Vector<ValidationMessage> validate() {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 
 	public LinkedList<ZgloszenieGeneric> getKolejka() {
 		return kolejka;

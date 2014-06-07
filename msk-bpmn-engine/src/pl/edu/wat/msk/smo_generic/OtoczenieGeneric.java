@@ -80,11 +80,11 @@ public class OtoczenieGeneric extends HaveNext {
 		return distribution.getNextDouble();
 	}
 
-	@Override
+/*	@Override
 	public Vector<ValidationMessage> validate() {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 
 	public String getId() {
 		return id;
