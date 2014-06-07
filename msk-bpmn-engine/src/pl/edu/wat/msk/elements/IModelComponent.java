@@ -17,7 +17,7 @@ public interface IModelComponent {
 	/** 
 	 *  Przetwarzanie
 	 */	
-	public void processing(ZgloszenieGeneric zgl);
+	public void processing(ZgloszenieGeneric zgl, String id);
 	
 	/** 
 	 *  Metoda walidacji komponentu.

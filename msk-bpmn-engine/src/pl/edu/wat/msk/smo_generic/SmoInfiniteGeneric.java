@@ -40,7 +40,7 @@ public class SmoInfiniteGeneric extends HavePrevNext {
 	}
 	
 	@Override
-	public void processing(ZgloszenieGeneric zgl) {
+	public void processing(ZgloszenieGeneric zgl, String id) {
 		// dodaj nowo otrzymane zgloszenie do kolejki
 		int wynikDodawania = this.dodaj(zgl);
 

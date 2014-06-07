@@ -25,7 +25,7 @@ public class Destination extends HavePrevNext {
 	}
 	
 	@Override
-	public void processing(ZgloszenieGeneric zgl) {
+	public void processing(ZgloszenieGeneric zgl, String id) {
 		if(nexts.isEmpty()) { // zwykłe destination
 			//TODO
 		}

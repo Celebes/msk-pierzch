@@ -60,7 +60,7 @@ public abstract class HavePrevNext extends ModelComponent implements IHaveNext, 
 	 */
 	public void putToNexts(ZgloszenieGeneric zgl) {
 		for (IModelComponent next : nexts) {
-			next.processing(zgl);
+			next.processing(zgl, getId());
 		}
 	}
 }
