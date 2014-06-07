@@ -11,6 +11,7 @@ import pl.edu.wat.msk.distributions.Uniform;
 import pl.edu.wat.msk.elements.HaveNext;
 import pl.edu.wat.msk.elements.IModelComponent;
 import pl.edu.wat.msk.elements.ValidationMessage;
+import pl.edu.wat.msk.events.ZglaszajGeneric;
 import pl.edu.wat.wcy.mtsk.xml_elements.Symulacja;
 import dissimlab.monitors.MonitoredVar;
 import dissimlab.simcore.SimControlException;

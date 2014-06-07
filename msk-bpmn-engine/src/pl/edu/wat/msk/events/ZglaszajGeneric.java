@@ -1,6 +1,8 @@
-package pl.edu.wat.msk.smo_generic;
+package pl.edu.wat.msk.events;
 
 import pl.edu.wat.msk.elements.IModelComponent;
+import pl.edu.wat.msk.smo_generic.OtoczenieGeneric;
+import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 import dissimlab.simcore.BasicSimEvent;
 import dissimlab.simcore.SimControlException;
 import dissimlab.simcore.SimParameters.SimDateField;
