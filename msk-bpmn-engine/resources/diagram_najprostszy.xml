@@ -21,8 +21,8 @@
 		<pod-czynnosc id="podczynnosc1" ref="czynnosc2"/>
 	
 		<polaczenie id="linia1" od="generator1" do="SMO1" />
-		<polaczenie id="linia2" od="SMO1" do="SMO2" />
-		<polaczenie id="linia3" od="SMO2" do="podczynnosc1" />
+		<polaczenie id="linia2" od="SMO1" do="podczynnosc1" />
+		<polaczenie id="linia3" od="podczynnosc1" do="SMO2" />
 
 	</czynnosc>
 	

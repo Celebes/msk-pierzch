@@ -56,6 +56,9 @@ public class SymulacjaRunner {
 			// generuj otoczenia
 			List<OtoczenieGeneric> wygenerowaneOtoczenia = XmlHelper.generujOtoczenia(czynnosc.getOtoczenie());
 			
+			// generuj podczynnosci
+			List<CompositActivity> wygenerowanePodczynnosci = new ArrayList<>();
+			
 			// zapisz liste ID podczynnosci do sprawdzenia
 			List<String> idPodczynnosci = XmlHelper.generujIdPodczynnosci(czynnosc.getPodCzynnosc());
 			
@@ -65,25 +68,45 @@ public class SymulacjaRunner {
 				String idOD = p.getOd();
 				String idDO = p.getDo();
 				
-				IHaveNext objOd = null;
-				IModelComponent objDo = null;
+				HavePrevNext objOd = null;
+				HavePrevNext objDo = null;
 				
-				boolean dotyczyPodczynnosci = false;
-				
-				// na poczatku sprawdz czy polaczenie nie dotyczy podczynnosci - jesli tak, to narazie pomin
-				for(String s : idPodczynnosci) {
-					if(s.equals(idOD) || s.equals(idDO)) {
-						System.out.println("Aktualne polaczenie (" + idOD + " -> " + idDO + ") dotyczy podczynnosci - pomijam!");
-						dotyczyPodczynnosci = true;
+				for(PodCzynnosc pc : czynnosc.getPodCzynnosc()) {
+					if(pc.getId().equals(idOD)) {
+						CompositActivity cac = new CompositActivity(pc.getRef());
+						//listaWszystkichCzynnosci.add(cac);
+						//listaElementowCzynnosci.add(cac);
+						wygenerowanePodczynnosci.add(cac);
+						objOd = cac;
+						
+						break;
+					}
+					
+					if(pc.getId().equals(idDO)) {
+						CompositActivity cac = new CompositActivity(pc.getRef());
+						//listaWszystkichCzynnosci.add(cac);
+						//listaElementowCzynnosci.add(cac);
+						wygenerowanePodczynnosci.add(cac);
+						objDo = cac;
+						
 						break;
 					}
 				}
-				
-				if(dotyczyPodczynnosci) {
-					continue;
-				}
-				
+
 				// iteruj po wszystkim w poszukiwaniu OD i DO
+				// najpierw sprawdz czy w innym polaczeniu nie utworzono juz ktoregos z obiektow
+				
+				boolean znaleziono = false;
+				
+				for(CompositActivity compAct : wygenerowanePodczynnosci) {
+					if(compAct.getId().equals(idOD)) {
+						objOd = compAct;
+					}
+					
+					if(compAct.getId().equals(idDO)) {
+						objDo = compAct;
+					}
+				}
 				
 				for(SmoInfiniteGeneric smo : wygenerowaneNieskonczoneSMO) {
 					if(smo.getId().equals(idOD)) {
@@ -115,21 +138,23 @@ public class SymulacjaRunner {
 					throw new SimControlException("ID podane w polaczeniu nie odnosi sie do zadnego istniejacego elementu w diagramie!");
 				} else {
 					objOd.addNext(objDo);
+					objDo.addPrev(objOd);
+					
+					System.out.println("OBIEKT 'OD' O ID [" + objOd.getId() + "], next: " + objOd.getNext().size() + " | prev: " + objOd.getPrev().size());
+					System.out.println("OBIEKT 'DO' O ID [" + objDo.getId() + "], next: " + objDo.getNext().size() + " | prev: " + objDo.getPrev().size());
 					
 					// dodaj prawdopodobienstwo z polaczenia do bramki
-					if(objOd instanceof Bramka) {
-						if(p.getWarunek() != null) {
-							
-						}
-					}
+					// ...
 					
-					System.out.println("Pomyslnie utworzono polaczenie pomiedzy obiektami od ID: " + idOD + ", " + idDO);
+					System.out.println("Pomyslnie utworzono polaczenie pomiedzy obiektami o ID: " + idOD + " <---> " + idDO);
 				}
 			}
 			
 			// dodaj wszystkie wygenerowane elementy do listy wszystkich klockow w danej czynnosci
 			listaElementowCzynnosci.addAll(wygenerowaneNieskonczoneSMO);
 			listaElementowCzynnosci.addAll(wygenerowaneOtoczenia);
+			listaElementowCzynnosci.addAll(wygenerowanePodczynnosci);
+			listaWszystkichCzynnosci.addAll(wygenerowanePodczynnosci);
 			
 			// znajdz element pierwszy w danej czynnosci
 			
@@ -157,7 +182,29 @@ public class SymulacjaRunner {
 			System.out.println("Pierwszym elementem w czynnosci " + czynnosc.getId() + " jest: " + first.getId() + ", a ostatnim: " + last.getId());
 			
 			// dodaj czynnosc do listy
-			listaWszystkichCzynnosci.add(new CompositActivity(czynnosc.getId(), first, last, listaElementowCzynnosci));
+			// najpierw sprawdz czy nie ma jej juz na liscie czynnosci
+			
+			boolean juzJest = false;
+			CompositActivity juzObecny = null;
+			
+			for(CompositActivity ca : listaWszystkichCzynnosci) {
+				if(czynnosc.getId().equals(ca.getId())) {
+					juzJest = true;
+					juzObecny = ca;
+					break;
+				}
+			}
+			
+			if(juzJest == false) {
+				listaWszystkichCzynnosci.add(new CompositActivity(czynnosc.getId(), first, last, listaElementowCzynnosci));
+			} else {
+				juzObecny.setFirstComponent(first);
+				juzObecny.setLastComponent(last);
+				juzObecny.setSubComponents(listaElementowCzynnosci);
+				juzObecny.setDependency();
+			}
+			
+			
 		}
 		
 		// teraz jak juz wszystkie czynnosci zostaly potworzone to mozna je ze soba polaczyc w zaleznosci od polaczen dot. podczynnosci

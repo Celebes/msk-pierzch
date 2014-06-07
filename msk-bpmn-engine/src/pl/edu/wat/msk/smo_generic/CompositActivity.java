@@ -24,6 +24,10 @@ public class CompositActivity extends HavePrevNext {
 		setDependency();
 	}
 	
+	public CompositActivity(String id) {
+		this.id = id;
+	}
+	
 	@Override
 	public void processing(ZgloszenieGeneric zgl, String id) {
 		firstComponent.processing(zgl, this.getId());
@@ -57,7 +61,7 @@ public class CompositActivity extends HavePrevNext {
 	 * Ustawienie następników całej aktywności złożonej
 	 * dla ostatniego komponentu w modelu.
 	 */
-	private void setDependency() {
+	public void setDependency() {
 		lastComponent.setNext(this.getNext());
 	}
 }
