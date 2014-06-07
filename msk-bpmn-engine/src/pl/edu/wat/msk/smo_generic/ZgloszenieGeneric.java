@@ -1,7 +1,6 @@
 package pl.edu.wat.msk.smo_generic;
 
 import pl.edu.wat.msk.elements.HavePrevNext;
-import pl.edu.wat.msk.elements.IModelComponent;
 import pl.edu.wat.msk.events.KoniecNiecierpliwosciGeneric;
 import pl.edu.wat.msk.events.StartNiecierpliwosciGeneric;
 import dissimlab.simcore.BasicSimObj;

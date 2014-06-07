@@ -2,7 +2,11 @@ package pl.edu.wat.msk.smo_generic;
 
 import java.util.ArrayList;
 
+import dissimlab.simcore.SimControlException;
+import pl.edu.wat.msk.distributions.IDistribution;
+import pl.edu.wat.msk.distributions.Normal;
 import pl.edu.wat.msk.elements.HavePrevNext;
+import pl.edu.wat.msk.events.WaitOnSemaphoreEvent;
 
 /**
  * Semafor
@@ -12,17 +16,34 @@ import pl.edu.wat.msk.elements.HavePrevNext;
  *
  */
 public class Semaphore extends HavePrevNext {
-	private ArrayList<ZgloszenieGeneric> waiting = new ArrayList<>();
-	
-	
+
+	private IDistribution distribution;
 	
 	public Semaphore() {
-		
+		distribution = new Normal(10.0, 1.0);
 	}
 	
+	/**
+	 * Semafor jeśli ustawiony będzie przed SMO to będzie tworzył zdarzenie oczekiwania na semaforze,
+	 * które dalej będzie obsługiwało oczekiwanie i zakończenie oczekiwania.
+	 * Jeśli następnik nie będzie typu SMO to przekaże zgłoszenie bezpośrednio do niego.
+	 */
 	@Override
 	public void processing(ZgloszenieGeneric zgl, String id) {
-		// TODO Auto-generated method stub
 		super.processing(zgl, getId());
+		
+		if(getNext().get(0).getClass() == SmoInfiniteGeneric.class) {
+			//powołanie zdarzenia oczekiwania na semaforze
+			
+			try {
+				new WaitOnSemaphoreEvent(this, distribution.getNextDouble(), zgl);
+			} catch (SimControlException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else {
+			putToNexts(zgl);
+		}
 	}
 }
