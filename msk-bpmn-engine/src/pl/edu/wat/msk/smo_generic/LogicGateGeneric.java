@@ -1,17 +1,19 @@
 /**
- * Łukasz Kotowski
+ * Ĺ�ukasz Kotowski
  */
 package pl.edu.wat.msk.smo_generic;
 
 import java.util.List;
 import java.util.Random;
 
+import pl.edu.wat.msk.distributions.IDistribution;
 import pl.edu.wat.msk.elements.HavePrevNext;
 import pl.edu.wat.msk.elements.IModelComponent;
 
 public class LogicGateGeneric extends HavePrevNext {
 	private String id;
 	private String rodzaj;
+	private IDistribution rozklad;
 
 	public LogicGateGeneric(String id, String rodzaj) {
 		this.id = id;
@@ -19,13 +21,7 @@ public class LogicGateGeneric extends HavePrevNext {
 	}
 
 	@Override
-	public void processing(ZgloszenieGeneric zgl) {
-		Random generujPrzejscie = new Random();
-		List<IModelComponent> kolejneKomponenty = getNext();
-		int liczbaWyjscBramki = getNext().size();
-		int wylosowanePrzejscie = 1 + generujPrzejscie
-				.nextInt(liczbaWyjscBramki);
-		getNext().get(wylosowanePrzejscie).processing(zgl);
+	public void processing(ZgloszenieGeneric zgl, String id) {
 
 	}
 

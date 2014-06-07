@@ -26,6 +26,7 @@ public abstract class ModelComponent extends BasicSimObj implements
      * Opis komponentu określony przez użytkownika.
      */
     private String description;
+    private String id;
 
     protected LinkedList<ZgloszenieGeneric> kolejka;
     public MonitoredVar MVdlKolejki;
@@ -46,8 +47,18 @@ public abstract class ModelComponent extends BasicSimObj implements
 	this.description = description;
     }
 
+    public String getId()
+    {
+        return id;
+    }
+
+    public void setId( String id )
+    {
+        this.id = id;
+    }
+
     @Override
-    public void processing(ZgloszenieGeneric zgl) {
+    public void processing(ZgloszenieGeneric zgl, String id) {
     }
 
     public List<ZgloszenieGeneric> getListaZgloszen() {

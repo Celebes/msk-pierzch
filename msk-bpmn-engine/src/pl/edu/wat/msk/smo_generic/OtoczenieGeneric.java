@@ -67,7 +67,7 @@ public class OtoczenieGeneric extends HavePrevNext {
 			}
 
 		} catch (Exception e) {
-			System.err.println("WPROWADZONO ZŁE DANE!");
+			System.err.println("WPROWADZONO ZĹ�E DANE!");
 		}
 		
 		zglaszaj = new ZglaszajGeneric(this, 0.0);
