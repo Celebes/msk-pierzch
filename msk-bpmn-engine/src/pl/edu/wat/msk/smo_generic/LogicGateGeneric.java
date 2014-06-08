@@ -9,13 +9,19 @@ import java.util.Random;
 import pl.edu.wat.msk.distributions.AbstractDistribution;
 import pl.edu.wat.msk.elements.HavePrevNext;
 import pl.edu.wat.msk.elements.IModelComponent;
+import pl.edu.wat.msk.elements.UseProbability;
 import pl.edu.wat.msk.utils.SelectDistributionUtil;
 import pl.edu.wat.wcy.mtsk.xml_elements.Param;
 
-public class LogicGateGeneric extends HavePrevNext {
+public class LogicGateGeneric extends UseProbability {
 	private String rodzaj;
 	private AbstractDistribution distribution;
 	private List<Param> params;
+	
+	public LogicGateGeneric(String id, String rodzaj) {
+		setId( id );
+		this.rodzaj = rodzaj;
+	}
 
 	public LogicGateGeneric(String id, String rodzaj, String distributionName, List<Param> params) {
 		setId( id );
@@ -31,7 +37,7 @@ public class LogicGateGeneric extends HavePrevNext {
 		Random generujPrzejscie = new Random();
 		List<IModelComponent> kolejneKomponenty = getNext();
 		int liczbaWyjscBramki = getNext().size();
-		int wylosowanePrzejscie = 1 + generujPrzejscie
+		int wylosowanePrzejscie = generujPrzejscie
 				.nextInt(liczbaWyjscBramki);
 		getNext().get(wylosowanePrzejscie).processing(zgl, getId());
 

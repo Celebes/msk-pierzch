@@ -10,8 +10,13 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import pl.edu.wat.msk.bramki_logiczne.AND;
+import pl.edu.wat.msk.bramki_logiczne.OR;
+import pl.edu.wat.msk.bramki_logiczne.XOR;
+import pl.edu.wat.msk.smo_generic.LogicGateGeneric;
 import pl.edu.wat.msk.smo_generic.OtoczenieGeneric;
 import pl.edu.wat.msk.smo_generic.SmoInfiniteGeneric;
+import pl.edu.wat.wcy.mtsk.xml_elements.Bramka;
 import pl.edu.wat.wcy.mtsk.xml_elements.Kolejka;
 import pl.edu.wat.wcy.mtsk.xml_elements.Otoczenie;
 import pl.edu.wat.wcy.mtsk.xml_elements.PodCzynnosc;
@@ -70,6 +75,31 @@ public class XmlHelper {
 		}
 		
 		return idPodczynnosci;
+	}
+
+	public static List<LogicGateGeneric> generujBramki(List<Bramka> bramka) {
+		List<LogicGateGeneric> wygenerowaneBramki = new ArrayList<>();
+		
+		for(Bramka b : bramka) {
+			LogicGateGeneric nowa = null;
+			
+			if(b.getRodzaj().equalsIgnoreCase("AND")) {
+				nowa = new AND(b.getId(), "AND");
+			} else if(b.getRodzaj().equalsIgnoreCase("OR")) {
+				nowa = new OR(b.getId(), "OR", null, null);
+			} else if(b.getRodzaj().equalsIgnoreCase("XOR")) {
+				nowa = new XOR(b.getId(), "XOR", null, null);
+			} else {
+				System.out.println("BLAD PRZY PARSOWANIU BRAMKI - NIEZNANY RODZAJ: " + b.getRodzaj());
+			}
+			
+			if(nowa != null) {
+				wygenerowaneBramki.add(nowa);
+			}
+			
+		}
+		
+		return wygenerowaneBramki;
 	}
 	
 }

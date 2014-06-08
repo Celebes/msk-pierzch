@@ -26,7 +26,7 @@ public class AND extends LogicGateGeneric
 
     public AND( String id, String rodzaj )
     {
-        super( id, rodzaj, null, null );
+        super( id, rodzaj);
         // inicjalizacja wewnętrznego repozytorium bramki
         // <id wejścia, <id zgloszenia, obiekt zgłoszenia>>
         repoZgloszen = new HashMap<>();

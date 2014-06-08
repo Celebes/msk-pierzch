@@ -26,4 +26,12 @@ public abstract class UseProbability extends HavePrevNext implements IUseProbabi
 		}
 	}
 
+	public Map<String, Float> getProbabilities() {
+		return probabilities;
+	}
+
+	public void setProbabilities(Map<String, Float> probabilities) {
+		this.probabilities = probabilities;
+	}
+
 }

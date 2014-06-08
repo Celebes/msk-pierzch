@@ -17,6 +17,10 @@ import pl.edu.wat.wcy.mtsk.xml_elements.Param;
  */
 public class XOR extends LogicGateGeneric {
 
+	public XOR(String id, String rodzaj) {
+		super(id, rodzaj);
+	    }
+	
     public XOR(String id, String rodzaj, String distributionName,
 	    List<Param> params) {
 	super(id, rodzaj, distributionName, params);

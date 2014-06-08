@@ -13,8 +13,8 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="otoczenie"/>
         <xs:element maxOccurs="unbounded" ref="kolejka"/>
         <xs:sequence minOccurs="0">
-          <xs:element ref="bramka"/>
-          <xs:element ref="semafor"/>
+          <xs:element maxOccurs="unbounded" ref="bramka"/>
+          <xs:element maxOccurs="unbounded" ref="semafor"/>
           <xs:element maxOccurs="unbounded" ref="pod-czynnosc"/>
           <xs:element maxOccurs="unbounded" ref="polaczenie"/>
         </xs:sequence>

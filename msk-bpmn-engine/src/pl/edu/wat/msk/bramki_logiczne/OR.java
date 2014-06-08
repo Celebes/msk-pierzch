@@ -17,6 +17,10 @@ import pl.edu.wat.wcy.mtsk.xml_elements.Param;
  */
 public class OR extends XOR {
 
+	public OR(String id, String rodzaj) {
+		super(id, rodzaj);
+	    }
+	
     public OR(String id, String rodzaj, String distributionName,
 	    List<Param> params) {
 	super(id, rodzaj, distributionName, params);

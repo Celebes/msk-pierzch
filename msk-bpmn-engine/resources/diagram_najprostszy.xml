@@ -18,11 +18,30 @@
 			<koniec id="niecierpliwosc2" />
 		</kolejka>
 		
+		<kolejka id="SMO4" nieskonczona="true" maxDlugoscKolejki="niesk">
+			<gniazdo id="G4" />
+			<koniec id="niecierpliwosc4" />
+		</kolejka>
+		
+		<bramka id="bramka1" rodzaj="OR" />
+		
 		<pod-czynnosc id="podczynnosc1" ref="czynnosc2"/>
 	
 		<polaczenie id="linia1" od="generator1" do="SMO1" />
-		<polaczenie id="linia2" od="SMO1" do="podczynnosc1" />
-		<polaczenie id="linia3" od="podczynnosc1" do="SMO2" />
+		
+		<polaczenie id="linia2" od="SMO1" do="bramka1" />
+		
+		<polaczenie id="linia3" od="bramka1" do="podczynnosc1">
+			<warunek id="warunek1" wartosc="0.5" />
+		</polaczenie>
+		
+		<polaczenie id="linia5" od="bramka1" do="SMO4">
+			<warunek id="warunek2" wartosc="0.5" />
+		</polaczenie>
+		
+		<polaczenie id="linia4" od="podczynnosc1" do="SMO2" />
+		
+		<polaczenie id="linia5" od="SMO4" do="SMO2" />
 
 	</czynnosc>
 	

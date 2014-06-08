@@ -8,12 +8,10 @@ import java.util.List;
 import javax.xml.bind.JAXBException;
 
 import pl.edu.wat.msk.elements.HavePrevNext;
-import pl.edu.wat.msk.elements.IHaveNext;
-import pl.edu.wat.msk.elements.IModelComponent;
 import pl.edu.wat.msk.smo_generic.CompositActivity;
+import pl.edu.wat.msk.smo_generic.LogicGateGeneric;
 import pl.edu.wat.msk.smo_generic.OtoczenieGeneric;
 import pl.edu.wat.msk.smo_generic.SmoInfiniteGeneric;
-import pl.edu.wat.wcy.mtsk.xml_elements.Bramka;
 import pl.edu.wat.wcy.mtsk.xml_elements.Czynnosc;
 import pl.edu.wat.wcy.mtsk.xml_elements.PodCzynnosc;
 import pl.edu.wat.wcy.mtsk.xml_elements.Polaczenie;
@@ -55,6 +53,9 @@ public class SymulacjaRunner {
 			
 			// generuj otoczenia
 			List<OtoczenieGeneric> wygenerowaneOtoczenia = XmlHelper.generujOtoczenia(czynnosc.getOtoczenie());
+			
+			// generuj bramki
+			List<LogicGateGeneric> wygenerowaneBramki = XmlHelper.generujBramki(czynnosc.getBramka());
 			
 			// generuj podczynnosci
 			List<CompositActivity> wygenerowanePodczynnosci = new ArrayList<>();
@@ -130,6 +131,16 @@ public class SymulacjaRunner {
 				
 				// bramki
 				
+				for(LogicGateGeneric lgg : wygenerowaneBramki) {
+					if(lgg.getId().equals(idOD)) {
+						objOd = lgg;
+					}
+					
+					if(lgg.getId().equals(idDO)) {
+						objDo = lgg;
+					}
+				}
+				
 				// semafory
 				
 				// ...
@@ -144,7 +155,22 @@ public class SymulacjaRunner {
 					System.out.println("OBIEKT 'DO' O ID [" + objDo.getId() + "], next: " + objDo.getNext().size() + " | prev: " + objDo.getPrev().size());
 					
 					// dodaj prawdopodobienstwo z polaczenia do bramki
-					// ...
+					if(p.getWarunek() != null) {
+						System.out.println("Na polaczeniu o id [" + p.getId() + "] znaleziono warunek [" + p.getWarunek().getId() + "] = " + p.getWarunek().getWartosc());
+						
+						// znajdz bramke bioraca udzial w polaczeniu
+						for(LogicGateGeneric lgg : wygenerowaneBramki) {
+							if(lgg.getId().equals(idOD)) {
+								lgg.addProbability(idDO, Float.valueOf(p.getWarunek().getWartosc()));
+								System.out.println("Dodano warunek ["+ p.getWarunek().getId() + "] dla bramki: " + lgg.getId());
+								break;
+							} else if(lgg.getId().equals(idDO)) {
+								lgg.addProbability(idOD, Float.valueOf(p.getWarunek().getWartosc()));
+								System.out.println("Dodano warunek ["+ p.getWarunek().getId() + "] dla bramki: " + lgg.getId());
+								break;
+							}
+						}
+					}
 					
 					System.out.println("Pomyslnie utworzono polaczenie pomiedzy obiektami o ID: " + idOD + " <---> " + idDO);
 				}
@@ -154,6 +180,7 @@ public class SymulacjaRunner {
 			listaElementowCzynnosci.addAll(wygenerowaneNieskonczoneSMO);
 			listaElementowCzynnosci.addAll(wygenerowaneOtoczenia);
 			listaElementowCzynnosci.addAll(wygenerowanePodczynnosci);
+			listaElementowCzynnosci.addAll(wygenerowaneBramki);
 			listaWszystkichCzynnosci.addAll(wygenerowanePodczynnosci);
 			
 			// znajdz element pierwszy w danej czynnosci
