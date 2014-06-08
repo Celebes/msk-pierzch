@@ -15,6 +15,7 @@ import pl.edu.wat.msk.bramki_logiczne.OR;
 import pl.edu.wat.msk.bramki_logiczne.XOR;
 import pl.edu.wat.msk.smo_generic.LogicGateGeneric;
 import pl.edu.wat.msk.smo_generic.OtoczenieGeneric;
+import pl.edu.wat.msk.smo_generic.Semaphore;
 import pl.edu.wat.msk.smo_generic.SmoInfiniteGeneric;
 import pl.edu.wat.wcy.mtsk.xml_elements.Bramka;
 import pl.edu.wat.wcy.mtsk.xml_elements.Kolejka;
@@ -22,6 +23,7 @@ import pl.edu.wat.wcy.mtsk.xml_elements.Otoczenie;
 import pl.edu.wat.wcy.mtsk.xml_elements.PodCzynnosc;
 import pl.edu.wat.wcy.mtsk.xml_elements.Polaczenie;
 import pl.edu.wat.wcy.mtsk.xml_elements.Rozklad;
+import pl.edu.wat.wcy.mtsk.xml_elements.Semafor;
 import pl.edu.wat.wcy.mtsk.xml_elements.Symulacja;
 import dissimlab.simcore.SimControlException;
 
@@ -100,6 +102,16 @@ public class XmlHelper {
 		}
 		
 		return wygenerowaneBramki;
+	}
+
+	public static List<Semaphore> generujSemafory(List<Semafor> semafor) {
+		List<Semaphore> wygenerowaneSemafory = new ArrayList<>();
+		
+		for(Semafor s : semafor) {
+			wygenerowaneSemafory.add(new Semaphore(s.getId()));
+		}
+		
+		return wygenerowaneSemafory;
 	}
 	
 }

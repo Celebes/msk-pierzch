@@ -22,7 +22,7 @@ public class FinishWaitOnSemaphoreEvent extends BasicSimEvent<Semaphore, Zglosze
 
 	@Override
 	protected void stateChange() throws SimControlException {
-		System.out.println(simTime()+": Koniec oczekiwania na semaforze zgl. nr: " + getSimObj().getId());
+		System.out.println(simTime()+": Koniec oczekiwania na semaforze zgl. nr: " + zgloszenie.getTenNr());
 		getSimObj().putToNexts(zgloszenie);
 	}
 

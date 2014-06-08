@@ -11,6 +11,7 @@ import pl.edu.wat.msk.elements.HavePrevNext;
 import pl.edu.wat.msk.smo_generic.CompositActivity;
 import pl.edu.wat.msk.smo_generic.LogicGateGeneric;
 import pl.edu.wat.msk.smo_generic.OtoczenieGeneric;
+import pl.edu.wat.msk.smo_generic.Semaphore;
 import pl.edu.wat.msk.smo_generic.SmoInfiniteGeneric;
 import pl.edu.wat.wcy.mtsk.xml_elements.Czynnosc;
 import pl.edu.wat.wcy.mtsk.xml_elements.PodCzynnosc;
@@ -59,6 +60,9 @@ public class SymulacjaRunner {
 			
 			// generuj podczynnosci
 			List<CompositActivity> wygenerowanePodczynnosci = new ArrayList<>();
+			
+			// generuj Semafory
+			List<Semaphore> wygenerowaneSemafory = XmlHelper.generujSemafory(czynnosc.getSemafor());
 			
 			// zapisz liste ID podczynnosci do sprawdzenia
 			List<String> idPodczynnosci = XmlHelper.generujIdPodczynnosci(czynnosc.getPodCzynnosc());
@@ -143,6 +147,16 @@ public class SymulacjaRunner {
 				
 				// semafory
 				
+				for(Semaphore s : wygenerowaneSemafory) {
+					if(s.getId().equals(idOD)) {
+						objOd = s;
+					}
+					
+					if(s.getId().equals(idDO)) {
+						objDo = s;
+					}
+				}
+				
 				// ...
 				
 				if(objOd == null || objDo == null) {
@@ -181,6 +195,7 @@ public class SymulacjaRunner {
 			listaElementowCzynnosci.addAll(wygenerowaneOtoczenia);
 			listaElementowCzynnosci.addAll(wygenerowanePodczynnosci);
 			listaElementowCzynnosci.addAll(wygenerowaneBramki);
+			listaElementowCzynnosci.addAll(wygenerowaneSemafory);
 			listaWszystkichCzynnosci.addAll(wygenerowanePodczynnosci);
 			
 			// znajdz element pierwszy w danej czynnosci

@@ -25,6 +25,8 @@
 		
 		<bramka id="bramka1" rodzaj="OR" />
 		
+		<semafor id="SEM" />
+		
 		<pod-czynnosc id="podczynnosc1" ref="czynnosc2"/>
 	
 		<polaczenie id="linia1" od="generator1" do="SMO1" />
@@ -35,13 +37,15 @@
 			<warunek id="warunek1" wartosc="0.5" />
 		</polaczenie>
 		
-		<polaczenie id="linia5" od="bramka1" do="SMO4">
+		<polaczenie id="linia5" od="bramka1" do="SEM">
 			<warunek id="warunek2" wartosc="0.5" />
 		</polaczenie>
 		
+		<polaczenie id="linia7" od="SEM" do="SMO4" />
+		
 		<polaczenie id="linia4" od="podczynnosc1" do="SMO2" />
 		
-		<polaczenie id="linia5" od="SMO4" do="SMO2" />
+		<polaczenie id="linia6" od="SMO4" do="SMO2" />
 
 	</czynnosc>
 	

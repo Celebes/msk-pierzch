@@ -30,7 +30,7 @@ public class WaitOnSemaphoreEvent extends BasicSimEvent<Semaphore, ZgloszenieGen
 
 	@Override
 	protected void stateChange() throws SimControlException {
-		System.out.println(simTime()+": Oczekiwania na semaforze zgl. nr: " + getSimObj().getId());
+		System.out.println(simTime()+": Oczekiwania na semaforze zgl. nr: " + notification.getTenNr());
 		
 		double time = distribution.getNextDouble();
 		

@@ -17,7 +17,8 @@ public class Semaphore extends HavePrevNext {
 
 	private IDistribution distribution;
 	
-	public Semaphore() {
+	public Semaphore(String id) {
+		this.id = id;
 		distribution = new Normal(10.0, 1.0);
 	}
 	
