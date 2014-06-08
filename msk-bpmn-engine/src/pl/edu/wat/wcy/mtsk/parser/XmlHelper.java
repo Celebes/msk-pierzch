@@ -13,9 +13,11 @@ import javax.xml.bind.Unmarshaller;
 import pl.edu.wat.msk.bramki_logiczne.AND;
 import pl.edu.wat.msk.bramki_logiczne.OR;
 import pl.edu.wat.msk.bramki_logiczne.XOR;
+import pl.edu.wat.msk.elements.HavePrevNext;
 import pl.edu.wat.msk.smo_generic.LogicGateGeneric;
 import pl.edu.wat.msk.smo_generic.OtoczenieGeneric;
 import pl.edu.wat.msk.smo_generic.Semaphore;
+import pl.edu.wat.msk.smo_generic.SmoFiniteGeneric;
 import pl.edu.wat.msk.smo_generic.SmoInfiniteGeneric;
 import pl.edu.wat.wcy.mtsk.xml_elements.Bramka;
 import pl.edu.wat.wcy.mtsk.xml_elements.Kolejka;
@@ -112,6 +114,22 @@ public class XmlHelper {
 		}
 		
 		return wygenerowaneSemafory;
+	}
+
+	public static List<HavePrevNext> generujKolejkiSMO(List<Kolejka> kolejka) {
+		List<HavePrevNext> wygenerowaneKolejkiSMO = new ArrayList<>();
+		
+		for(Kolejka k : kolejka) {
+			if(k.isNieskonczona() == true) {
+				wygenerowaneKolejkiSMO.add(new SmoInfiniteGeneric(k.getId()));
+				System.out.println("Dodano kolejke nieskonczona o id: " + k.getId());
+			} else {
+				wygenerowaneKolejkiSMO.add(new SmoFiniteGeneric(k.getId(), Integer.parseInt(k.getMaxDlugoscKolejki())));
+				System.out.println("Dodano kolejke skonczona o id: " + k.getId() + " i max dlugosci: " + Integer.parseInt(k.getMaxDlugoscKolejki()));
+			}
+		}
+		
+		return wygenerowaneKolejkiSMO;
 	}
 	
 }

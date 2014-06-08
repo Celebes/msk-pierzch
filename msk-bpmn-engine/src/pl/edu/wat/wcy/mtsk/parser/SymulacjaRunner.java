@@ -50,7 +50,10 @@ public class SymulacjaRunner {
 			List<HavePrevNext> listaElementowCzynnosci = new ArrayList<>();
 			
 			// generuj SMO nieskonczone
-			List<SmoInfiniteGeneric> wygenerowaneNieskonczoneSMO = XmlHelper.generujKolejkiNieskonczone(czynnosc.getKolejka());
+			//List<SmoInfiniteGeneric> wygenerowaneNieskonczoneSMO = XmlHelper.generujKolejkiNieskonczone(czynnosc.getKolejka());
+			
+			// generuj SMO
+			List<HavePrevNext> wygenerowaneSMO = XmlHelper.generujKolejkiSMO(czynnosc.getKolejka());
 			
 			// generuj otoczenia
 			List<OtoczenieGeneric> wygenerowaneOtoczenia = XmlHelper.generujOtoczenia(czynnosc.getOtoczenie());
@@ -113,7 +116,7 @@ public class SymulacjaRunner {
 					}
 				}
 				
-				for(SmoInfiniteGeneric smo : wygenerowaneNieskonczoneSMO) {
+				for(HavePrevNext smo : wygenerowaneSMO) {
 					if(smo.getId().equals(idOD)) {
 						objOd = smo;
 					}
@@ -191,7 +194,7 @@ public class SymulacjaRunner {
 			}
 			
 			// dodaj wszystkie wygenerowane elementy do listy wszystkich klockow w danej czynnosci
-			listaElementowCzynnosci.addAll(wygenerowaneNieskonczoneSMO);
+			listaElementowCzynnosci.addAll(wygenerowaneSMO);
 			listaElementowCzynnosci.addAll(wygenerowaneOtoczenia);
 			listaElementowCzynnosci.addAll(wygenerowanePodczynnosci);
 			listaElementowCzynnosci.addAll(wygenerowaneBramki);

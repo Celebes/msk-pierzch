@@ -8,7 +8,7 @@
 			</rozklad>
 		</otoczenie>
 
-		<kolejka id="SMO1" nieskonczona="true" maxDlugoscKolejki="niesk">
+		<kolejka id="SMO1" nieskonczona="false" maxDlugoscKolejki="5">
 			<gniazdo id="G1" />
 			<koniec id="niecierpliwosc1" />
 		</kolejka>
