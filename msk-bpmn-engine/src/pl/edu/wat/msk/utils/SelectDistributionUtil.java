@@ -58,7 +58,7 @@ public class SelectDistributionUtil {
 	    }
 
 	} catch (Exception e) {
-	    System.err.println("WPROWADZONO ZŁE DANE!");
+	    //System.err.println("WPROWADZONO ZŁE DANE!");
 	}
 
 	return null;

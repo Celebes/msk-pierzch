@@ -26,7 +26,7 @@ public class AND extends LogicGateGeneric
 
     public AND( String id, String rodzaj )
     {
-        super( id, rodzaj);
+        super( id, rodzaj );
         // inicjalizacja wewnętrznego repozytorium bramki
         // <id wejścia, <id zgloszenia, obiekt zgłoszenia>>
         repoZgloszen = new HashMap<>();
@@ -42,10 +42,15 @@ public class AND extends LogicGateGeneric
         // sprawdź czy można przenieść zgłoszenie o key na wyjścia
         if ( isWaitNotification( zgl.getTenNr() ) )
         {
+            System.out.println( "Zgłoszenie może zostać przeniesione na wyjście!" );
             // usuń zgłoszenie z repozytorium ze wszystkich wejść
             this.removeNotificationFromANDGateById( zgl.getTenNr() );
             // przenieś zgłoszenie na wszystkie wyjścia
             super.putToNexts( zgl );
+        }
+        else
+        {
+            System.out.println( "Zgłoszenie musi czekać na bramce!" );
         }
 
     }
@@ -72,7 +77,7 @@ public class AND extends LogicGateGeneric
             }
         }
 
-        if ( currentnumberOfNotifics == numberOfInputs )
+        if ( currentnumberOfNotifics == getPrev().size() )
             return true;
         else
             return false;
