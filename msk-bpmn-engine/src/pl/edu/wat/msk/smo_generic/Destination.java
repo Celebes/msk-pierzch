@@ -28,6 +28,7 @@ public class Destination extends HavePrevNext {
 	
 	@Override
 	public void processing(ZgloszenieGeneric zgl, String id) {
+		System.out.println("Zgloszenie " + zgl.getTenNr() +  " opuszcza system z sukcesem");
 		simSystem.success(zgl);
 	}
 

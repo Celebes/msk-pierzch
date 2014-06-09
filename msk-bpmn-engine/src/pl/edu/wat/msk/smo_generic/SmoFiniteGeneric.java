@@ -52,8 +52,12 @@ public class SmoFiniteGeneric extends HavePrevNext {
 				}
 	        }
 		}
-		
-		// wyjście zgłoszenia (nie może być przyjęte)
+		else {
+
+			// wyjście zgłoszenia (nie może być przyjęte)
+			System.out.println("Zgloszenie nr " + zgl.getTenNr() + " opuszcza system, brak miejsca w kolejce SMO " + this.getId());
+			SimSystem.getInstance().failure(zgl);
+		}
 	}
 
 	public LinkedList<ZgloszenieGeneric> getKolejka() {
