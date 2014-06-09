@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Random;
 
 import pl.edu.wat.msk.distributions.AbstractDistribution;
-import pl.edu.wat.msk.elements.HavePrevNext;
 import pl.edu.wat.msk.elements.IModelComponent;
 import pl.edu.wat.msk.elements.UseProbability;
 import pl.edu.wat.msk.utils.SelectDistributionUtil;
