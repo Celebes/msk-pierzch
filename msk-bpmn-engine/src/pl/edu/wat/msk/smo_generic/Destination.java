@@ -1,6 +1,5 @@
 package pl.edu.wat.msk.smo_generic;
 
-import dissimlab.simcore.SimManager;
 import pl.edu.wat.msk.elements.HavePrevNext;
 import pl.edu.wat.msk.elements.IModelComponent;
 
@@ -29,10 +28,7 @@ public class Destination extends HavePrevNext {
 	
 	@Override
 	public void processing(ZgloszenieGeneric zgl, String id) {
-		zgl.destroy();
-		
-		double serviceTime = SimManager.getInstance().simTime() - zgl.getCzasOdniesienia();
-		simSystem.mv_serviceTime.setValue(serviceTime);
+		simSystem.success(zgl);
 	}
 
 	@Override

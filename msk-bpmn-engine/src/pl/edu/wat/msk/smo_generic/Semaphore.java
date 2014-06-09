@@ -31,7 +31,7 @@ public class Semaphore extends HavePrevNext {
 	public void processing(ZgloszenieGeneric zgl, String id) {
 		super.processing(zgl, getId());
 		
-		if(getNext().get(0).getClass() == SmoInfiniteGeneric.class) {
+		if(getNext().get(0).getClass() == SmoFiniteGeneric.class) {
 			//powołanie zdarzenia oczekiwania na semaforze
 			
 			try {

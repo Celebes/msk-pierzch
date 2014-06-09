@@ -1,5 +1,6 @@
 package pl.edu.wat.msk.events;
 
+import pl.edu.wat.msk.smo_generic.SimSystem;
 import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
 import dissimlab.random.SimGenerator;
 import dissimlab.simcore.BasicSimEvent;
@@ -26,7 +27,7 @@ public class KoniecNiecierpliwosciGeneric extends BasicSimEvent<ZgloszenieGeneri
     
 	@Override
 	protected void onInterruption() throws SimControlException {
-        System.out.println(simTime()+": Przerwanie niecierpliwo�ci zgl. nr: " + parent.getTenNr());
+        System.out.println(simTime()+": Przerwanie niecierpliwości zgl. nr: " + parent.getTenNr());
 	}
 
 	@Override
@@ -39,8 +40,8 @@ public class KoniecNiecierpliwosciGeneric extends BasicSimEvent<ZgloszenieGeneri
 	protected void stateChange() throws SimControlException {
 		System.out.println(simTime()+": Koniec niecierpliwosci zgl. nr: " + parent.getTenNr());
 		
+		SimSystem.getInstance().failure(getSimObj()); // musi być wywołane, ma wpływ na statystyki w systemie
 		
-		getSimObj().destroy(); // musi być wywołane, ma wpływ na statystyki w systemie
 		//if(parent.aktualnieObslugujacyKomponent.)
 		
 		

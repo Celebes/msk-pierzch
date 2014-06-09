@@ -12,7 +12,6 @@ import pl.edu.wat.msk.smo_generic.CompositActivity;
 import pl.edu.wat.msk.smo_generic.LogicGateGeneric;
 import pl.edu.wat.msk.smo_generic.OtoczenieGeneric;
 import pl.edu.wat.msk.smo_generic.Semaphore;
-import pl.edu.wat.msk.smo_generic.SmoInfiniteGeneric;
 import pl.edu.wat.wcy.mtsk.xml_elements.Czynnosc;
 import pl.edu.wat.wcy.mtsk.xml_elements.PodCzynnosc;
 import pl.edu.wat.wcy.mtsk.xml_elements.Polaczenie;

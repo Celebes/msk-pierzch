@@ -2,29 +2,23 @@ package pl.edu.wat.msk.events;
 
 import pl.edu.wat.msk.smo_generic.SmoInfiniteGeneric;
 import pl.edu.wat.msk.smo_generic.ZgloszenieGeneric;
-import smo.Smo;
-import smo.ZakonczObsluge;
-import smo.Zgloszenie;
 import dissimlab.random.SimGenerator;
 import dissimlab.simcore.BasicSimEvent;
 import dissimlab.simcore.SimControlException;
 
 public class RozpocznijObslugeInfiniteGeneric extends BasicSimEvent<SmoInfiniteGeneric, ZgloszenieGeneric> {
-	private SmoInfiniteGeneric smoParent;
     private SimGenerator generator;
 
     public RozpocznijObslugeInfiniteGeneric(SmoInfiniteGeneric parent, double delay) throws SimControlException
     {
     	super(parent, delay);
     	generator = new SimGenerator();
-        this.smoParent = parent;
     }
 
     public RozpocznijObslugeInfiniteGeneric(SmoInfiniteGeneric parent) throws SimControlException
     {
     	super(parent);
     	generator = new SimGenerator();
-        this.smoParent = parent;
     }
     
 	@Override
@@ -41,22 +35,24 @@ public class RozpocznijObslugeInfiniteGeneric extends BasicSimEvent<SmoInfiniteG
 
 	@Override
 	protected void stateChange() throws SimControlException {
-        if (smoParent.getKolejka().size() > 0)
+		SmoInfiniteGeneric parent = getSimObj();
+		
+        if (parent.getKolejka().size() > 0)
         {
         	// Zablokuj gniazdo
-        	smoParent.setWolne(false);
+        	parent.setWolne(false);
         	// Pobierz zgloszenie
-        	ZgloszenieGeneric zgl = smoParent.usun();
+        	ZgloszenieGeneric zgl = parent.usun();
         	// Przerwanie niecierpliwosci
         	// zgl.koniecNiecierpliwosci.interrupt();
         	// Wygeneruj czas obslugi
         	double czasObslugi = generator.normal(9.0, 1.0);
             // Zapamietaj dane monitorowane
-            smoParent.MVczasy_oczekiwania.setValue(simTime() - zgl.getCzasOdniesienia());
+            parent.MVczasy_oczekiwania.setValue(simTime() - zgl.getCzasOdniesienia());
             zgl.setCzasOdniesienia(simTime());
-            System.out.println(simTime()+": Poczatek obslugi zgl. nr: " + zgl.getTenNr() + " w SMO " + smoParent.getId());
+            System.out.println(simTime()+": Poczatek obslugi zgl. nr: " + zgl.getTenNr() + " w SMO " + parent.getId());
         	// Zaplanuj koniec obslugi
-        	smoParent.zakonczObsluge = new ZakonczObslugeInfiniteGeneric(smoParent, czasObslugi, zgl);        	
+        	parent.zakonczObsluge = new ZakonczObslugeInfiniteGeneric(parent, czasObslugi, zgl);        	
         }
 		
 	}

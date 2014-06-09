@@ -1,11 +1,14 @@
 package pl.edu.wat.msk.smo_generic;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import pl.edu.wat.msk.elements.HavePrevNext;
+import pl.edu.wat.msk.elements.IModelComponent;
 import pl.edu.wat.msk.events.RozpocznijObslugeFiniteGeneric;
 import pl.edu.wat.msk.events.ZakonczObslugeFiniteGeneric;
 import dissimlab.monitors.MonitoredVar;
+import dissimlab.simcore.SimControlException;
 
 /*
  * Kolejka skonczona
@@ -34,4 +37,99 @@ public class SmoFiniteGeneric extends HavePrevNext {
 		MVutraconeZgl = new MonitoredVar();
 	}
 
+	@Override
+	public void processing(ZgloszenieGeneric zgl, String id) {
+		if(kolejka.size() < maxDlKolejki) {
+			// dodaj nowo otrzymane zgloszenie do kolejki
+			int wynikDodawania = this.dodaj(zgl);
+
+			// jesli jest zgloszenie i gniazdo jest wolne to uruchom obsluge
+			if (wynikDodawania == 1 && this.isWolne()) {
+	        	try {
+					this.rozpocznijObsluge = new RozpocznijObslugeFiniteGeneric(this);
+				} catch (SimControlException e) {
+					e.printStackTrace();
+				}
+	        }
+		}
+		
+		// wyjście zgłoszenia (nie może być przyjęte)
+	}
+
+	public LinkedList<ZgloszenieGeneric> getKolejka() {
+		return kolejka;
+	}
+
+	public void setKolejka(LinkedList<ZgloszenieGeneric> kolejka) {
+		this.kolejka = kolejka;
+	}
+
+	public boolean isWolne() {
+		return wolne;
+	}
+
+	public void setWolne(boolean wolne) {
+		this.wolne = wolne;
+	}
+
+	public RozpocznijObslugeFiniteGeneric getRozpocznijObsluge() {
+		return rozpocznijObsluge;
+	}
+
+	public void setRozpocznijObsluge(RozpocznijObslugeFiniteGeneric rozpocznijObsluge) {
+		this.rozpocznijObsluge = rozpocznijObsluge;
+	}
+
+	public ZakonczObslugeFiniteGeneric getZakonczObsluge() {
+		return zakonczObsluge;
+	}
+
+	public void setZakonczObsluge(ZakonczObslugeFiniteGeneric zakonczObsluge) {
+		this.zakonczObsluge = zakonczObsluge;
+	}
+
+	public MonitoredVar getMVczasy_obslugi() {
+		return MVczasy_obslugi;
+	}
+
+	public void setMVczasy_obslugi(MonitoredVar mVczasy_obslugi) {
+		MVczasy_obslugi = mVczasy_obslugi;
+	}
+
+	public MonitoredVar getMVczasy_oczekiwania() {
+		return MVczasy_oczekiwania;
+	}
+
+	public void setMVczasy_oczekiwania(MonitoredVar mVczasy_oczekiwania) {
+		MVczasy_oczekiwania = mVczasy_oczekiwania;
+	}
+
+	public MonitoredVar getMVdlKolejki() {
+		return MVdlKolejki;
+	}
+
+	public void setMVdlKolejki(MonitoredVar mVdlKolejki) {
+		MVdlKolejki = mVdlKolejki;
+	}
+
+	public MonitoredVar getMVutraconeZgl() {
+		return MVutraconeZgl;
+	}
+
+	public void setMVutraconeZgl(MonitoredVar mVutraconeZgl) {
+		MVutraconeZgl = mVutraconeZgl;
+	}
+
+	@Override
+	public void setNext(List<IModelComponent> next) {
+		this.nexts = next;
+	}
+
+	public int getMaxDlKolejki() {
+		return maxDlKolejki;
+	}
+
+	public void setMaxDlKolejki(int maxDlKolejki) {
+		this.maxDlKolejki = maxDlKolejki;
+	}
 }
